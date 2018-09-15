@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.CommercialPigMapper" >
+  <resultMap id="BaseResultMap" type="com.pojo.CommercialPig" >
+    <id column="batch_number" property="batchNumber" jdbcType="INTEGER" />
+    <result column="earlabel" property="earlabel" jdbcType="INTEGER" />
+    <result column="pigsty_message" property="pigstyMessage" jdbcType="INTEGER" />
+    <result column="breeder" property="breeder" jdbcType="CHAR" />
+    <result column="pig_type" property="pigType" jdbcType="CHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="Business_date" property="businessDate" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    batch_number, earlabel, pigsty_message, breeder, pig_type, age, number, Business_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pojo.CommercialPigExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from commercial_pig
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from commercial_pig
+    where batch_number = #{batchNumber,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from commercial_pig
+    where batch_number = #{batchNumber,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pojo.CommercialPigExample" >
+    delete from commercial_pig
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pojo.CommercialPig" >
+    insert into commercial_pig (batch_number, earlabel, pigsty_message, 
+      breeder, pig_type, age, number, 
+      Business_date)
+    values (#{batchNumber,jdbcType=INTEGER}, #{earlabel,jdbcType=INTEGER}, #{pigstyMessage,jdbcType=INTEGER}, 
+      #{breeder,jdbcType=CHAR}, #{pigType,jdbcType=CHAR}, #{age,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}, 
+      #{businessDate,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.CommercialPig" >
+    insert into commercial_pig
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="batchNumber != null" >
+        batch_number,
+      </if>
+      <if test="earlabel != null" >
+        earlabel,
+      </if>
+      <if test="pigstyMessage != null" >
+        pigsty_message,
+      </if>
+      <if test="breeder != null" >
+        breeder,
+      </if>
+      <if test="pigType != null" >
+        pig_type,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="businessDate != null" >
+        Business_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="batchNumber != null" >
+        #{batchNumber,jdbcType=INTEGER},
+      </if>
+      <if test="earlabel != null" >
+        #{earlabel,jdbcType=INTEGER},
+      </if>
+      <if test="pigstyMessage != null" >
+        #{pigstyMessage,jdbcType=INTEGER},
+      </if>
+      <if test="breeder != null" >
+        #{breeder,jdbcType=CHAR},
+      </if>
+      <if test="pigType != null" >
+        #{pigType,jdbcType=CHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="businessDate != null" >
+        #{businessDate,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pojo.CommercialPigExample" resultType="java.lang.Integer" >
+    select count(*) from commercial_pig
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update commercial_pig
+    <set >
+      <if test="record.batchNumber != null" >
+        batch_number = #{record.batchNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.earlabel != null" >
+        earlabel = #{record.earlabel,jdbcType=INTEGER},
+      </if>
+      <if test="record.pigstyMessage != null" >
+        pigsty_message = #{record.pigstyMessage,jdbcType=INTEGER},
+      </if>
+      <if test="record.breeder != null" >
+        breeder = #{record.breeder,jdbcType=CHAR},
+      </if>
+      <if test="record.pigType != null" >
+        pig_type = #{record.pigType,jdbcType=CHAR},
+      </if>
+      <if test="record.age != null" >
+        age = #{record.age,jdbcType=INTEGER},
+      </if>
+      <if test="record.number != null" >
+        number = #{record.number,jdbcType=INTEGER},
+      </if>
+      <if test="record.businessDate != null" >
+        Business_date = #{record.businessDate,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update commercial_pig
+    set batch_number = #{record.batchNumber,jdbcType=INTEGER},
+      earlabel = #{record.earlabel,jdbcType=INTEGER},
+      pigsty_message = #{record.pigstyMessage,jdbcType=INTEGER},
+      breeder = #{record.breeder,jdbcType=CHAR},
+      pig_type = #{record.pigType,jdbcType=CHAR},
+      age = #{record.age,jdbcType=INTEGER},
+      number = #{record.number,jdbcType=INTEGER},
+      Business_date = #{record.businessDate,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.CommercialPig" >
+    update commercial_pig
+    <set >
+      <if test="earlabel != null" >
+        earlabel = #{earlabel,jdbcType=INTEGER},
+      </if>
+      <if test="pigstyMessage != null" >
+        pigsty_message = #{pigstyMessage,jdbcType=INTEGER},
+      </if>
+      <if test="breeder != null" >
+        breeder = #{breeder,jdbcType=CHAR},
+      </if>
+      <if test="pigType != null" >
+        pig_type = #{pigType,jdbcType=CHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="businessDate != null" >
+        Business_date = #{businessDate,jdbcType=CHAR},
+      </if>
+    </set>
+    where batch_number = #{batchNumber,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.CommercialPig" >
+    update commercial_pig
+    set earlabel = #{earlabel,jdbcType=INTEGER},
+      pigsty_message = #{pigstyMessage,jdbcType=INTEGER},
+      breeder = #{breeder,jdbcType=CHAR},
+      pig_type = #{pigType,jdbcType=CHAR},
+      age = #{age,jdbcType=INTEGER},
+      number = #{number,jdbcType=INTEGER},
+      Business_date = #{businessDate,jdbcType=CHAR}
+    where batch_number = #{batchNumber,jdbcType=INTEGER}
+  </update>
+</mapper>

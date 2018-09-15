@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.EliminateMapper" >
+  <resultMap id="BaseResultMap" type="com.pojo.Eliminate" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="earlabel" property="earlabel" jdbcType="INTEGER" />
+    <result column="pigsty_message" property="pigstyMessage" jdbcType="CHAR" />
+    <result column="pig_type" property="pigType" jdbcType="CHAR" />
+    <result column="eliminate_stage" property="eliminateStage" jdbcType="CHAR" />
+    <result column="eliminate_type" property="eliminateType" jdbcType="CHAR" />
+    <result column="eliminate_reason" property="eliminateReason" jdbcType="CHAR" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="total_weight" property="totalWeight" jdbcType="REAL" />
+    <result column="eliminate_date" property="eliminateDate" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, earlabel, pigsty_message, pig_type, eliminate_stage, eliminate_type, eliminate_reason, 
+    number, total_weight, eliminate_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pojo.EliminateExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from eliminate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from eliminate
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from eliminate
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pojo.EliminateExample" >
+    delete from eliminate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pojo.Eliminate" >
+    insert into eliminate (id, earlabel, pigsty_message, 
+      pig_type, eliminate_stage, eliminate_type, 
+      eliminate_reason, number, total_weight, 
+      eliminate_date)
+    values (#{id,jdbcType=INTEGER}, #{earlabel,jdbcType=INTEGER}, #{pigstyMessage,jdbcType=CHAR}, 
+      #{pigType,jdbcType=CHAR}, #{eliminateStage,jdbcType=CHAR}, #{eliminateType,jdbcType=CHAR}, 
+      #{eliminateReason,jdbcType=CHAR}, #{number,jdbcType=INTEGER}, #{totalWeight,jdbcType=REAL}, 
+      #{eliminateDate,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.Eliminate" >
+    insert into eliminate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="earlabel != null" >
+        earlabel,
+      </if>
+      <if test="pigstyMessage != null" >
+        pigsty_message,
+      </if>
+      <if test="pigType != null" >
+        pig_type,
+      </if>
+      <if test="eliminateStage != null" >
+        eliminate_stage,
+      </if>
+      <if test="eliminateType != null" >
+        eliminate_type,
+      </if>
+      <if test="eliminateReason != null" >
+        eliminate_reason,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="totalWeight != null" >
+        total_weight,
+      </if>
+      <if test="eliminateDate != null" >
+        eliminate_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="earlabel != null" >
+        #{earlabel,jdbcType=INTEGER},
+      </if>
+      <if test="pigstyMessage != null" >
+        #{pigstyMessage,jdbcType=CHAR},
+      </if>
+      <if test="pigType != null" >
+        #{pigType,jdbcType=CHAR},
+      </if>
+      <if test="eliminateStage != null" >
+        #{eliminateStage,jdbcType=CHAR},
+      </if>
+      <if test="eliminateType != null" >
+        #{eliminateType,jdbcType=CHAR},
+      </if>
+      <if test="eliminateReason != null" >
+        #{eliminateReason,jdbcType=CHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="totalWeight != null" >
+        #{totalWeight,jdbcType=REAL},
+      </if>
+      <if test="eliminateDate != null" >
+        #{eliminateDate,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pojo.EliminateExample" resultType="java.lang.Integer" >
+    select count(*) from eliminate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update eliminate
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.earlabel != null" >
+        earlabel = #{record.earlabel,jdbcType=INTEGER},
+      </if>
+      <if test="record.pigstyMessage != null" >
+        pigsty_message = #{record.pigstyMessage,jdbcType=CHAR},
+      </if>
+      <if test="record.pigType != null" >
+        pig_type = #{record.pigType,jdbcType=CHAR},
+      </if>
+      <if test="record.eliminateStage != null" >
+        eliminate_stage = #{record.eliminateStage,jdbcType=CHAR},
+      </if>
+      <if test="record.eliminateType != null" >
+        eliminate_type = #{record.eliminateType,jdbcType=CHAR},
+      </if>
+      <if test="record.eliminateReason != null" >
+        eliminate_reason = #{record.eliminateReason,jdbcType=CHAR},
+      </if>
+      <if test="record.number != null" >
+        number = #{record.number,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalWeight != null" >
+        total_weight = #{record.totalWeight,jdbcType=REAL},
+      </if>
+      <if test="record.eliminateDate != null" >
+        eliminate_date = #{record.eliminateDate,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update eliminate
+    set id = #{record.id,jdbcType=INTEGER},
+      earlabel = #{record.earlabel,jdbcType=INTEGER},
+      pigsty_message = #{record.pigstyMessage,jdbcType=CHAR},
+      pig_type = #{record.pigType,jdbcType=CHAR},
+      eliminate_stage = #{record.eliminateStage,jdbcType=CHAR},
+      eliminate_type = #{record.eliminateType,jdbcType=CHAR},
+      eliminate_reason = #{record.eliminateReason,jdbcType=CHAR},
+      number = #{record.number,jdbcType=INTEGER},
+      total_weight = #{record.totalWeight,jdbcType=REAL},
+      eliminate_date = #{record.eliminateDate,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.Eliminate" >
+    update eliminate
+    <set >
+      <if test="earlabel != null" >
+        earlabel = #{earlabel,jdbcType=INTEGER},
+      </if>
+      <if test="pigstyMessage != null" >
+        pigsty_message = #{pigstyMessage,jdbcType=CHAR},
+      </if>
+      <if test="pigType != null" >
+        pig_type = #{pigType,jdbcType=CHAR},
+      </if>
+      <if test="eliminateStage != null" >
+        eliminate_stage = #{eliminateStage,jdbcType=CHAR},
+      </if>
+      <if test="eliminateType != null" >
+        eliminate_type = #{eliminateType,jdbcType=CHAR},
+      </if>
+      <if test="eliminateReason != null" >
+        eliminate_reason = #{eliminateReason,jdbcType=CHAR},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="totalWeight != null" >
+        total_weight = #{totalWeight,jdbcType=REAL},
+      </if>
+      <if test="eliminateDate != null" >
+        eliminate_date = #{eliminateDate,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.Eliminate" >
+    update eliminate
+    set earlabel = #{earlabel,jdbcType=INTEGER},
+      pigsty_message = #{pigstyMessage,jdbcType=CHAR},
+      pig_type = #{pigType,jdbcType=CHAR},
+      eliminate_stage = #{eliminateStage,jdbcType=CHAR},
+      eliminate_type = #{eliminateType,jdbcType=CHAR},
+      eliminate_reason = #{eliminateReason,jdbcType=CHAR},
+      number = #{number,jdbcType=INTEGER},
+      total_weight = #{totalWeight,jdbcType=REAL},
+      eliminate_date = #{eliminateDate,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.ChangePigstyCommercialMapper" >
+  <resultMap id="BaseResultMap" type="com.pojo.ChangePigstyCommercial" >
+    <result column="turngroup_type" property="turngroupType" jdbcType="CHAR" />
+    <result column="batch_number" property="batchNumber" jdbcType="INTEGER" />
+    <result column="out_pigsty" property="outPigsty" jdbcType="INTEGER" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="in_pigsty" property="inPigsty" jdbcType="INTEGER" />
+    <result column="total_weight" property="totalWeight" jdbcType="REAL" />
+    <result column="data" property="data" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    turngroup_type, batch_number, out_pigsty, number, in_pigsty, total_weight, data
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pojo.ChangePigstyCommercialExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from change_pigsty_commercial
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.pojo.ChangePigstyCommercialExample" >
+    delete from change_pigsty_commercial
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pojo.ChangePigstyCommercial" >
+    insert into change_pigsty_commercial (turngroup_type, batch_number, out_pigsty, 
+      number, in_pigsty, total_weight, 
+      data)
+    values (#{turngroupType,jdbcType=CHAR}, #{batchNumber,jdbcType=INTEGER}, #{outPigsty,jdbcType=INTEGER}, 
+      #{number,jdbcType=INTEGER}, #{inPigsty,jdbcType=INTEGER}, #{totalWeight,jdbcType=REAL}, 
+      #{data,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.ChangePigstyCommercial" >
+    insert into change_pigsty_commercial
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="turngroupType != null" >
+        turngroup_type,
+      </if>
+      <if test="batchNumber != null" >
+        batch_number,
+      </if>
+      <if test="outPigsty != null" >
+        out_pigsty,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="inPigsty != null" >
+        in_pigsty,
+      </if>
+      <if test="totalWeight != null" >
+        total_weight,
+      </if>
+      <if test="data != null" >
+        data,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="turngroupType != null" >
+        #{turngroupType,jdbcType=CHAR},
+      </if>
+      <if test="batchNumber != null" >
+        #{batchNumber,jdbcType=INTEGER},
+      </if>
+      <if test="outPigsty != null" >
+        #{outPigsty,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="inPigsty != null" >
+        #{inPigsty,jdbcType=INTEGER},
+      </if>
+      <if test="totalWeight != null" >
+        #{totalWeight,jdbcType=REAL},
+      </if>
+      <if test="data != null" >
+        #{data,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pojo.ChangePigstyCommercialExample" resultType="java.lang.Integer" >
+    select count(*) from change_pigsty_commercial
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update change_pigsty_commercial
+    <set >
+      <if test="record.turngroupType != null" >
+        turngroup_type = #{record.turngroupType,jdbcType=CHAR},
+      </if>
+      <if test="record.batchNumber != null" >
+        batch_number = #{record.batchNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.outPigsty != null" >
+        out_pigsty = #{record.outPigsty,jdbcType=INTEGER},
+      </if>
+      <if test="record.number != null" >
+        number = #{record.number,jdbcType=INTEGER},
+      </if>
+      <if test="record.inPigsty != null" >
+        in_pigsty = #{record.inPigsty,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalWeight != null" >
+        total_weight = #{record.totalWeight,jdbcType=REAL},
+      </if>
+      <if test="record.data != null" >
+        data = #{record.data,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update change_pigsty_commercial
+    set turngroup_type = #{record.turngroupType,jdbcType=CHAR},
+      batch_number = #{record.batchNumber,jdbcType=INTEGER},
+      out_pigsty = #{record.outPigsty,jdbcType=INTEGER},
+      number = #{record.number,jdbcType=INTEGER},
+      in_pigsty = #{record.inPigsty,jdbcType=INTEGER},
+      total_weight = #{record.totalWeight,jdbcType=REAL},
+      data = #{record.data,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

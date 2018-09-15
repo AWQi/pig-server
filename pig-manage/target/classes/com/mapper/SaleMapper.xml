@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.SaleMapper" >
+  <resultMap id="BaseResultMap" type="com.pojo.Sale" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="pigsty_message" property="pigstyMessage" jdbcType="CHAR" />
+    <result column="earlabel" property="earlabel" jdbcType="INTEGER" />
+    <result column="pig_type" property="pigType" jdbcType="CHAR" />
+    <result column="unit_price" property="unitPrice" jdbcType="REAL" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="total_weight" property="totalWeight" jdbcType="REAL" />
+    <result column="customer_name" property="customerName" jdbcType="CHAR" />
+    <result column="customer_address" property="customerAddress" jdbcType="CHAR" />
+    <result column="customer_tel" property="customerTel" jdbcType="CHAR" />
+    <result column="sales_date" property="salesDate" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, pigsty_message, earlabel, pig_type, unit_price, number, total_weight, customer_name, 
+    customer_address, customer_tel, sales_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pojo.SaleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sale
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sale
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sale
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pojo.SaleExample" >
+    delete from sale
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pojo.Sale" >
+    insert into sale (id, pigsty_message, earlabel, 
+      pig_type, unit_price, number, 
+      total_weight, customer_name, customer_address, 
+      customer_tel, sales_date)
+    values (#{id,jdbcType=INTEGER}, #{pigstyMessage,jdbcType=CHAR}, #{earlabel,jdbcType=INTEGER}, 
+      #{pigType,jdbcType=CHAR}, #{unitPrice,jdbcType=REAL}, #{number,jdbcType=INTEGER}, 
+      #{totalWeight,jdbcType=REAL}, #{customerName,jdbcType=CHAR}, #{customerAddress,jdbcType=CHAR}, 
+      #{customerTel,jdbcType=CHAR}, #{salesDate,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.Sale" >
+    insert into sale
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="pigstyMessage != null" >
+        pigsty_message,
+      </if>
+      <if test="earlabel != null" >
+        earlabel,
+      </if>
+      <if test="pigType != null" >
+        pig_type,
+      </if>
+      <if test="unitPrice != null" >
+        unit_price,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="totalWeight != null" >
+        total_weight,
+      </if>
+      <if test="customerName != null" >
+        customer_name,
+      </if>
+      <if test="customerAddress != null" >
+        customer_address,
+      </if>
+      <if test="customerTel != null" >
+        customer_tel,
+      </if>
+      <if test="salesDate != null" >
+        sales_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pigstyMessage != null" >
+        #{pigstyMessage,jdbcType=CHAR},
+      </if>
+      <if test="earlabel != null" >
+        #{earlabel,jdbcType=INTEGER},
+      </if>
+      <if test="pigType != null" >
+        #{pigType,jdbcType=CHAR},
+      </if>
+      <if test="unitPrice != null" >
+        #{unitPrice,jdbcType=REAL},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="totalWeight != null" >
+        #{totalWeight,jdbcType=REAL},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=CHAR},
+      </if>
+      <if test="customerAddress != null" >
+        #{customerAddress,jdbcType=CHAR},
+      </if>
+      <if test="customerTel != null" >
+        #{customerTel,jdbcType=CHAR},
+      </if>
+      <if test="salesDate != null" >
+        #{salesDate,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pojo.SaleExample" resultType="java.lang.Integer" >
+    select count(*) from sale
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sale
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.pigstyMessage != null" >
+        pigsty_message = #{record.pigstyMessage,jdbcType=CHAR},
+      </if>
+      <if test="record.earlabel != null" >
+        earlabel = #{record.earlabel,jdbcType=INTEGER},
+      </if>
+      <if test="record.pigType != null" >
+        pig_type = #{record.pigType,jdbcType=CHAR},
+      </if>
+      <if test="record.unitPrice != null" >
+        unit_price = #{record.unitPrice,jdbcType=REAL},
+      </if>
+      <if test="record.number != null" >
+        number = #{record.number,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalWeight != null" >
+        total_weight = #{record.totalWeight,jdbcType=REAL},
+      </if>
+      <if test="record.customerName != null" >
+        customer_name = #{record.customerName,jdbcType=CHAR},
+      </if>
+      <if test="record.customerAddress != null" >
+        customer_address = #{record.customerAddress,jdbcType=CHAR},
+      </if>
+      <if test="record.customerTel != null" >
+        customer_tel = #{record.customerTel,jdbcType=CHAR},
+      </if>
+      <if test="record.salesDate != null" >
+        sales_date = #{record.salesDate,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sale
+    set id = #{record.id,jdbcType=INTEGER},
+      pigsty_message = #{record.pigstyMessage,jdbcType=CHAR},
+      earlabel = #{record.earlabel,jdbcType=INTEGER},
+      pig_type = #{record.pigType,jdbcType=CHAR},
+      unit_price = #{record.unitPrice,jdbcType=REAL},
+      number = #{record.number,jdbcType=INTEGER},
+      total_weight = #{record.totalWeight,jdbcType=REAL},
+      customer_name = #{record.customerName,jdbcType=CHAR},
+      customer_address = #{record.customerAddress,jdbcType=CHAR},
+      customer_tel = #{record.customerTel,jdbcType=CHAR},
+      sales_date = #{record.salesDate,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.Sale" >
+    update sale
+    <set >
+      <if test="pigstyMessage != null" >
+        pigsty_message = #{pigstyMessage,jdbcType=CHAR},
+      </if>
+      <if test="earlabel != null" >
+        earlabel = #{earlabel,jdbcType=INTEGER},
+      </if>
+      <if test="pigType != null" >
+        pig_type = #{pigType,jdbcType=CHAR},
+      </if>
+      <if test="unitPrice != null" >
+        unit_price = #{unitPrice,jdbcType=REAL},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="totalWeight != null" >
+        total_weight = #{totalWeight,jdbcType=REAL},
+      </if>
+      <if test="customerName != null" >
+        customer_name = #{customerName,jdbcType=CHAR},
+      </if>
+      <if test="customerAddress != null" >
+        customer_address = #{customerAddress,jdbcType=CHAR},
+      </if>
+      <if test="customerTel != null" >
+        customer_tel = #{customerTel,jdbcType=CHAR},
+      </if>
+      <if test="salesDate != null" >
+        sales_date = #{salesDate,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.Sale" >
+    update sale
+    set pigsty_message = #{pigstyMessage,jdbcType=CHAR},
+      earlabel = #{earlabel,jdbcType=INTEGER},
+      pig_type = #{pigType,jdbcType=CHAR},
+      unit_price = #{unitPrice,jdbcType=REAL},
+      number = #{number,jdbcType=INTEGER},
+      total_weight = #{totalWeight,jdbcType=REAL},
+      customer_name = #{customerName,jdbcType=CHAR},
+      customer_address = #{customerAddress,jdbcType=CHAR},
+      customer_tel = #{customerTel,jdbcType=CHAR},
+      sales_date = #{salesDate,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

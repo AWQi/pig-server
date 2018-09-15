@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.ImmuneMapper" >
+  <resultMap id="BaseResultMap" type="com.pojo.Immune" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="immune_name" property="immuneName" jdbcType="CHAR" />
+    <result column="earlabel" property="earlabel" jdbcType="INTEGER" />
+    <result column="immune_date" property="immuneDate" jdbcType="CHAR" />
+    <result column="vaccine" property="vaccine" jdbcType="CHAR" />
+    <result column="unit_dose" property="unitDose" jdbcType="REAL" />
+    <result column="total_dose" property="totalDose" jdbcType="REAL" />
+    <result column="prickle" property="prickle" jdbcType="CHAR" />
+    <result column="immune_type" property="immuneType" jdbcType="CHAR" />
+    <result column="operator" property="operator" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, immune_name, earlabel, immune_date, vaccine, unit_dose, total_dose, prickle, 
+    immune_type, operator
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pojo.ImmuneExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from immune
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from immune
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from immune
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pojo.ImmuneExample" >
+    delete from immune
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pojo.Immune" >
+    insert into immune (id, immune_name, earlabel, 
+      immune_date, vaccine, unit_dose, 
+      total_dose, prickle, immune_type, 
+      operator)
+    values (#{id,jdbcType=INTEGER}, #{immuneName,jdbcType=CHAR}, #{earlabel,jdbcType=INTEGER}, 
+      #{immuneDate,jdbcType=CHAR}, #{vaccine,jdbcType=CHAR}, #{unitDose,jdbcType=REAL}, 
+      #{totalDose,jdbcType=REAL}, #{prickle,jdbcType=CHAR}, #{immuneType,jdbcType=CHAR}, 
+      #{operator,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.Immune" >
+    insert into immune
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="immuneName != null" >
+        immune_name,
+      </if>
+      <if test="earlabel != null" >
+        earlabel,
+      </if>
+      <if test="immuneDate != null" >
+        immune_date,
+      </if>
+      <if test="vaccine != null" >
+        vaccine,
+      </if>
+      <if test="unitDose != null" >
+        unit_dose,
+      </if>
+      <if test="totalDose != null" >
+        total_dose,
+      </if>
+      <if test="prickle != null" >
+        prickle,
+      </if>
+      <if test="immuneType != null" >
+        immune_type,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="immuneName != null" >
+        #{immuneName,jdbcType=CHAR},
+      </if>
+      <if test="earlabel != null" >
+        #{earlabel,jdbcType=INTEGER},
+      </if>
+      <if test="immuneDate != null" >
+        #{immuneDate,jdbcType=CHAR},
+      </if>
+      <if test="vaccine != null" >
+        #{vaccine,jdbcType=CHAR},
+      </if>
+      <if test="unitDose != null" >
+        #{unitDose,jdbcType=REAL},
+      </if>
+      <if test="totalDose != null" >
+        #{totalDose,jdbcType=REAL},
+      </if>
+      <if test="prickle != null" >
+        #{prickle,jdbcType=CHAR},
+      </if>
+      <if test="immuneType != null" >
+        #{immuneType,jdbcType=CHAR},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pojo.ImmuneExample" resultType="java.lang.Integer" >
+    select count(*) from immune
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update immune
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.immuneName != null" >
+        immune_name = #{record.immuneName,jdbcType=CHAR},
+      </if>
+      <if test="record.earlabel != null" >
+        earlabel = #{record.earlabel,jdbcType=INTEGER},
+      </if>
+      <if test="record.immuneDate != null" >
+        immune_date = #{record.immuneDate,jdbcType=CHAR},
+      </if>
+      <if test="record.vaccine != null" >
+        vaccine = #{record.vaccine,jdbcType=CHAR},
+      </if>
+      <if test="record.unitDose != null" >
+        unit_dose = #{record.unitDose,jdbcType=REAL},
+      </if>
+      <if test="record.totalDose != null" >
+        total_dose = #{record.totalDose,jdbcType=REAL},
+      </if>
+      <if test="record.prickle != null" >
+        prickle = #{record.prickle,jdbcType=CHAR},
+      </if>
+      <if test="record.immuneType != null" >
+        immune_type = #{record.immuneType,jdbcType=CHAR},
+      </if>
+      <if test="record.operator != null" >
+        operator = #{record.operator,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update immune
+    set id = #{record.id,jdbcType=INTEGER},
+      immune_name = #{record.immuneName,jdbcType=CHAR},
+      earlabel = #{record.earlabel,jdbcType=INTEGER},
+      immune_date = #{record.immuneDate,jdbcType=CHAR},
+      vaccine = #{record.vaccine,jdbcType=CHAR},
+      unit_dose = #{record.unitDose,jdbcType=REAL},
+      total_dose = #{record.totalDose,jdbcType=REAL},
+      prickle = #{record.prickle,jdbcType=CHAR},
+      immune_type = #{record.immuneType,jdbcType=CHAR},
+      operator = #{record.operator,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.Immune" >
+    update immune
+    <set >
+      <if test="immuneName != null" >
+        immune_name = #{immuneName,jdbcType=CHAR},
+      </if>
+      <if test="earlabel != null" >
+        earlabel = #{earlabel,jdbcType=INTEGER},
+      </if>
+      <if test="immuneDate != null" >
+        immune_date = #{immuneDate,jdbcType=CHAR},
+      </if>
+      <if test="vaccine != null" >
+        vaccine = #{vaccine,jdbcType=CHAR},
+      </if>
+      <if test="unitDose != null" >
+        unit_dose = #{unitDose,jdbcType=REAL},
+      </if>
+      <if test="totalDose != null" >
+        total_dose = #{totalDose,jdbcType=REAL},
+      </if>
+      <if test="prickle != null" >
+        prickle = #{prickle,jdbcType=CHAR},
+      </if>
+      <if test="immuneType != null" >
+        immune_type = #{immuneType,jdbcType=CHAR},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.Immune" >
+    update immune
+    set immune_name = #{immuneName,jdbcType=CHAR},
+      earlabel = #{earlabel,jdbcType=INTEGER},
+      immune_date = #{immuneDate,jdbcType=CHAR},
+      vaccine = #{vaccine,jdbcType=CHAR},
+      unit_dose = #{unitDose,jdbcType=REAL},
+      total_dose = #{totalDose,jdbcType=REAL},
+      prickle = #{prickle,jdbcType=CHAR},
+      immune_type = #{immuneType,jdbcType=CHAR},
+      operator = #{operator,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

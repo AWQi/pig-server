@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.SwineBreedingMapper" >
+  <resultMap id="BaseResultMap" type="com.pojo.SwineBreeding" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="earlabel_female" property="earlabelFemale" jdbcType="INTEGER" />
+    <result column="earlabel_male" property="earlabelMale" jdbcType="INTEGER" />
+    <result column="pigsty_message" property="pigstyMessage" jdbcType="CHAR" />
+    <result column="breeder" property="breeder" jdbcType="CHAR" />
+    <result column="breeder_way" property="breederWay" jdbcType="CHAR" />
+    <result column="breeder_date" property="breederDate" jdbcType="CHAR" />
+    <result column="remark" property="remark" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, earlabel_female, earlabel_male, pigsty_message, breeder, breeder_way, breeder_date, 
+    remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pojo.SwineBreedingExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from swine_breeding
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from swine_breeding
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from swine_breeding
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pojo.SwineBreedingExample" >
+    delete from swine_breeding
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pojo.SwineBreeding" >
+    insert into swine_breeding (id, earlabel_female, earlabel_male, 
+      pigsty_message, breeder, breeder_way, 
+      breeder_date, remark)
+    values (#{id,jdbcType=INTEGER}, #{earlabelFemale,jdbcType=INTEGER}, #{earlabelMale,jdbcType=INTEGER}, 
+      #{pigstyMessage,jdbcType=CHAR}, #{breeder,jdbcType=CHAR}, #{breederWay,jdbcType=CHAR}, 
+      #{breederDate,jdbcType=CHAR}, #{remark,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pojo.SwineBreeding" >
+    insert into swine_breeding
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="earlabelFemale != null" >
+        earlabel_female,
+      </if>
+      <if test="earlabelMale != null" >
+        earlabel_male,
+      </if>
+      <if test="pigstyMessage != null" >
+        pigsty_message,
+      </if>
+      <if test="breeder != null" >
+        breeder,
+      </if>
+      <if test="breederWay != null" >
+        breeder_way,
+      </if>
+      <if test="breederDate != null" >
+        breeder_date,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="earlabelFemale != null" >
+        #{earlabelFemale,jdbcType=INTEGER},
+      </if>
+      <if test="earlabelMale != null" >
+        #{earlabelMale,jdbcType=INTEGER},
+      </if>
+      <if test="pigstyMessage != null" >
+        #{pigstyMessage,jdbcType=CHAR},
+      </if>
+      <if test="breeder != null" >
+        #{breeder,jdbcType=CHAR},
+      </if>
+      <if test="breederWay != null" >
+        #{breederWay,jdbcType=CHAR},
+      </if>
+      <if test="breederDate != null" >
+        #{breederDate,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pojo.SwineBreedingExample" resultType="java.lang.Integer" >
+    select count(*) from swine_breeding
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update swine_breeding
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.earlabelFemale != null" >
+        earlabel_female = #{record.earlabelFemale,jdbcType=INTEGER},
+      </if>
+      <if test="record.earlabelMale != null" >
+        earlabel_male = #{record.earlabelMale,jdbcType=INTEGER},
+      </if>
+      <if test="record.pigstyMessage != null" >
+        pigsty_message = #{record.pigstyMessage,jdbcType=CHAR},
+      </if>
+      <if test="record.breeder != null" >
+        breeder = #{record.breeder,jdbcType=CHAR},
+      </if>
+      <if test="record.breederWay != null" >
+        breeder_way = #{record.breederWay,jdbcType=CHAR},
+      </if>
+      <if test="record.breederDate != null" >
+        breeder_date = #{record.breederDate,jdbcType=CHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update swine_breeding
+    set id = #{record.id,jdbcType=INTEGER},
+      earlabel_female = #{record.earlabelFemale,jdbcType=INTEGER},
+      earlabel_male = #{record.earlabelMale,jdbcType=INTEGER},
+      pigsty_message = #{record.pigstyMessage,jdbcType=CHAR},
+      breeder = #{record.breeder,jdbcType=CHAR},
+      breeder_way = #{record.breederWay,jdbcType=CHAR},
+      breeder_date = #{record.breederDate,jdbcType=CHAR},
+      remark = #{record.remark,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.SwineBreeding" >
+    update swine_breeding
+    <set >
+      <if test="earlabelFemale != null" >
+        earlabel_female = #{earlabelFemale,jdbcType=INTEGER},
+      </if>
+      <if test="earlabelMale != null" >
+        earlabel_male = #{earlabelMale,jdbcType=INTEGER},
+      </if>
+      <if test="pigstyMessage != null" >
+        pigsty_message = #{pigstyMessage,jdbcType=CHAR},
+      </if>
+      <if test="breeder != null" >
+        breeder = #{breeder,jdbcType=CHAR},
+      </if>
+      <if test="breederWay != null" >
+        breeder_way = #{breederWay,jdbcType=CHAR},
+      </if>
+      <if test="breederDate != null" >
+        breeder_date = #{breederDate,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.SwineBreeding" >
+    update swine_breeding
+    set earlabel_female = #{earlabelFemale,jdbcType=INTEGER},
+      earlabel_male = #{earlabelMale,jdbcType=INTEGER},
+      pigsty_message = #{pigstyMessage,jdbcType=CHAR},
+      breeder = #{breeder,jdbcType=CHAR},
+      breeder_way = #{breederWay,jdbcType=CHAR},
+      breeder_date = #{breederDate,jdbcType=CHAR},
+      remark = #{remark,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
