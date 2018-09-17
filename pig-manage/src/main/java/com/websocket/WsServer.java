@@ -10,6 +10,8 @@ import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 
+import com.common.JsonUtils;
+
 
 
 public class WsServer extends WebSocketServer {
@@ -28,6 +30,7 @@ public class WsServer extends WebSocketServer {
         // ws连接的时候触发的代码，onOpen中我们不做任何操作
     	System.out.println();
     	System.out.println("onOpen dp:"+conn.DEFAULT_WSS_PORT+" wssport:"+conn.DEFAULT_WSS_PORT);
+    	
     }
 
     @Override
@@ -44,12 +47,18 @@ public class WsServer extends WebSocketServer {
 		// TODO Auto-generated method stub
 		super.onMessage(conn, message);
 		
+		
 
 	}
 
 	@Override
     public void onMessage(WebSocket conn, String message) {
-        
+		System.out.println(message);
+		ClientMsg msg = JsonUtils.jsonToPojo(message, ClientMsg.class);
+		if (msg.getEventType().equals("online")) { //  上线
+	    	ClientJoin(conn, msg.getMsg());
+	    	ClientManager.getInstance().sendMessageToClient(msg.getMsg(), "websocket已连接");
+		}
     
     }
 
@@ -76,6 +85,7 @@ public class WsServer extends WebSocketServer {
     private void ClientJoin(WebSocket conn,String ClientId){
         //WsPool.addClient(ClientId, conn);
     	ClientManager.getInstance().registClient(new Client(ClientId, conn));
+    	System.out.println(ClientId+"上线");
     }
 
 }

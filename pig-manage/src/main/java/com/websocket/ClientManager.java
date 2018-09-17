@@ -16,7 +16,7 @@ public class ClientManager {
 	
 	//保存socket到客户端的关系，方便通过socket快速找到客户端
 	private Map<WebSocket,Client> mMapSocketToClient;
-	//保存机器人id到客户端的关系
+	//保存id到客户端的关系
 	private Map<String,Client> mMapIdToClient;
 	
 	private Map<String,Thread> mWorkThread;

@@ -32,12 +32,16 @@ public class WebSocketFilter implements Filter {
 
 	}
 
+	//  初始化  websocket
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
 		// TODO Auto-generated method stub
 		this.startWebsocketInstantMsg();
 
-		startAsyncTaskTest();
+		
+		
+		// 测试异步任务
+//		startAsyncTaskTest();
 		
 
 	}
@@ -53,6 +57,12 @@ public class WebSocketFilter implements Filter {
 		s.start();
 	}
 
+	
+	
+	
+	
+	
+	
 	private static class MyAsyncTask extends AsyncTask<String, Integer, String> {
 
 		private String mName = "AsyncTask";
@@ -72,15 +82,15 @@ public class WebSocketFilter implements Filter {
 
 		@Override
 		protected String doInBackground(String... params) {
-			try {
-
-				for (int i = 0; i < 10; i++) {
-					Thread.sleep(10000);
-					publishProgress(i*10);
-				}
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+//			try {
+//
+//				for (int i = 0; i < 10; i++) {
+//					Thread.sleep(10000);
+//					publishProgress(i*10);
+//				}
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
 			return mName;
 		}
 
@@ -104,10 +114,7 @@ public class WebSocketFilter implements Filter {
 	
 	public void startAsyncTaskTest() {
 		new MyAsyncTask("AsyncTask#1").execute("");
-		new MyAsyncTask("AsyncTask#2").execute("");
-		new MyAsyncTask("AsyncTask#3").execute("");
-		new MyAsyncTask("AsyncTask#4").execute("");
-		new MyAsyncTask("AsyncTask#5").execute("");
+	
 	}
 
 }

@@ -20,7 +20,6 @@ D:\eclipse\pig\pig-server\pig-manage\src\main\java\com\task\Handler.java
 D:\eclipse\pig\pig-server\pig-manage\src\main\java\com\mapper\SaleMapper.java
 D:\eclipse\pig\pig-server\pig-manage\src\main\java\com\pojo\SwineBreedingExample.java
 D:\eclipse\pig\pig-server\pig-manage\src\main\java\com\pojo\EliminateExample.java
-D:\eclipse\pig\pig-server\pig-manage\src\main\java\com\socket\HandlerInterceptor.java
 D:\eclipse\pig\pig-server\pig-manage\src\main\java\com\websocket\WsPool.java
 D:\eclipse\pig\pig-server\pig-manage\src\main\java\com\pojo\BreedingPig.java
 D:\eclipse\pig\pig-server\pig-manage\src\main\java\com\service\EliminateService.java
@@ -41,6 +40,7 @@ D:\eclipse\pig\pig-server\pig-manage\src\main\java\com\controller\PigstyControll
 D:\eclipse\pig\pig-server\pig-manage\src\main\java\com\controller\BreedingPigController.java
 D:\eclipse\pig\pig-server\pig-manage\src\main\java\com\mapper\EliminateMapper.java
 D:\eclipse\pig\pig-server\pig-manage\src\main\java\com\mapper\BreederMapper.java
+D:\eclipse\pig\pig-server\pig-manage\src\main\java\com\websocket\ClientMsg.java
 D:\eclipse\pig\pig-server\pig-manage\src\main\java\com\pojo\Pigsty.java
 D:\eclipse\pig\pig-server\pig-manage\src\main\java\com\task\Message.java
 D:\eclipse\pig\pig-server\pig-manage\src\main\java\com\pojo\BreedingPigExample.java

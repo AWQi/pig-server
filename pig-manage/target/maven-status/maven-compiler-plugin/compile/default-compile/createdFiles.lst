@@ -25,6 +25,7 @@ com\service\CommercialPigService.class
 com\task\AsyncTask$WorkerRunnable.class
 com\pojo\CommercialPig.class
 com\pojo\SwineBreedingExample$Criterion.class
+com\websocket\ClientMsg.class
 com\pojo\BreedingPigExample.class
 com\service\ImmuneService.class
 com\service\BreedingPigService.class
