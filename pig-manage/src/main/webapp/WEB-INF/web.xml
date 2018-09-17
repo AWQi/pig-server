@@ -49,4 +49,16 @@
         <servlet-name>DispatcherServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+    
+   <!-- 
+   
+   			配置websocket 过滤器
+    -->
+  	<filter>
+		<filter-name>websocketFilter</filter-name>
+		<filter-class>com.websocket.WebSocketFilter</filter-class>
+	</filter> 
+	
+
+ 
 </web-app>
