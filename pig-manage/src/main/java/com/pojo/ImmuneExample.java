@@ -304,62 +304,52 @@ public class ImmuneExample {
             return (Criteria) this;
         }
 
-        public Criteria andImmuneDateEqualTo(String value) {
+        public Criteria andImmuneDateEqualTo(Long value) {
             addCriterion("immune_date =", value, "immuneDate");
             return (Criteria) this;
         }
 
-        public Criteria andImmuneDateNotEqualTo(String value) {
+        public Criteria andImmuneDateNotEqualTo(Long value) {
             addCriterion("immune_date <>", value, "immuneDate");
             return (Criteria) this;
         }
 
-        public Criteria andImmuneDateGreaterThan(String value) {
+        public Criteria andImmuneDateGreaterThan(Long value) {
             addCriterion("immune_date >", value, "immuneDate");
             return (Criteria) this;
         }
 
-        public Criteria andImmuneDateGreaterThanOrEqualTo(String value) {
+        public Criteria andImmuneDateGreaterThanOrEqualTo(Long value) {
             addCriterion("immune_date >=", value, "immuneDate");
             return (Criteria) this;
         }
 
-        public Criteria andImmuneDateLessThan(String value) {
+        public Criteria andImmuneDateLessThan(Long value) {
             addCriterion("immune_date <", value, "immuneDate");
             return (Criteria) this;
         }
 
-        public Criteria andImmuneDateLessThanOrEqualTo(String value) {
+        public Criteria andImmuneDateLessThanOrEqualTo(Long value) {
             addCriterion("immune_date <=", value, "immuneDate");
             return (Criteria) this;
         }
 
-        public Criteria andImmuneDateLike(String value) {
-            addCriterion("immune_date like", value, "immuneDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andImmuneDateNotLike(String value) {
-            addCriterion("immune_date not like", value, "immuneDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andImmuneDateIn(List<String> values) {
+        public Criteria andImmuneDateIn(List<Long> values) {
             addCriterion("immune_date in", values, "immuneDate");
             return (Criteria) this;
         }
 
-        public Criteria andImmuneDateNotIn(List<String> values) {
+        public Criteria andImmuneDateNotIn(List<Long> values) {
             addCriterion("immune_date not in", values, "immuneDate");
             return (Criteria) this;
         }
 
-        public Criteria andImmuneDateBetween(String value1, String value2) {
+        public Criteria andImmuneDateBetween(Long value1, Long value2) {
             addCriterion("immune_date between", value1, value2, "immuneDate");
             return (Criteria) this;
         }
 
-        public Criteria andImmuneDateNotBetween(String value1, String value2) {
+        public Criteria andImmuneDateNotBetween(Long value1, Long value2) {
             addCriterion("immune_date not between", value1, value2, "immuneDate");
             return (Criteria) this;
         }

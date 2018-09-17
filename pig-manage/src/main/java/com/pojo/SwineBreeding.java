@@ -13,7 +13,7 @@ public class SwineBreeding {
 
     private String breederWay;
 
-    private String breederDate;
+    private Long breederDate;
 
     private String remark;
 
@@ -65,12 +65,12 @@ public class SwineBreeding {
         this.breederWay = breederWay == null ? null : breederWay.trim();
     }
 
-    public String getBreederDate() {
+    public Long getBreederDate() {
         return breederDate;
     }
 
-    public void setBreederDate(String breederDate) {
-        this.breederDate = breederDate == null ? null : breederDate.trim();
+    public void setBreederDate(Long breederDate) {
+        this.breederDate = breederDate;
     }
 
     public String getRemark() {

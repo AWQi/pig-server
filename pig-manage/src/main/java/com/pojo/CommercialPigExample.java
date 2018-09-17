@@ -554,62 +554,52 @@ public class CommercialPigExample {
             return (Criteria) this;
         }
 
-        public Criteria andBusinessDateEqualTo(String value) {
+        public Criteria andBusinessDateEqualTo(Long value) {
             addCriterion("Business_date =", value, "businessDate");
             return (Criteria) this;
         }
 
-        public Criteria andBusinessDateNotEqualTo(String value) {
+        public Criteria andBusinessDateNotEqualTo(Long value) {
             addCriterion("Business_date <>", value, "businessDate");
             return (Criteria) this;
         }
 
-        public Criteria andBusinessDateGreaterThan(String value) {
+        public Criteria andBusinessDateGreaterThan(Long value) {
             addCriterion("Business_date >", value, "businessDate");
             return (Criteria) this;
         }
 
-        public Criteria andBusinessDateGreaterThanOrEqualTo(String value) {
+        public Criteria andBusinessDateGreaterThanOrEqualTo(Long value) {
             addCriterion("Business_date >=", value, "businessDate");
             return (Criteria) this;
         }
 
-        public Criteria andBusinessDateLessThan(String value) {
+        public Criteria andBusinessDateLessThan(Long value) {
             addCriterion("Business_date <", value, "businessDate");
             return (Criteria) this;
         }
 
-        public Criteria andBusinessDateLessThanOrEqualTo(String value) {
+        public Criteria andBusinessDateLessThanOrEqualTo(Long value) {
             addCriterion("Business_date <=", value, "businessDate");
             return (Criteria) this;
         }
 
-        public Criteria andBusinessDateLike(String value) {
-            addCriterion("Business_date like", value, "businessDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andBusinessDateNotLike(String value) {
-            addCriterion("Business_date not like", value, "businessDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andBusinessDateIn(List<String> values) {
+        public Criteria andBusinessDateIn(List<Long> values) {
             addCriterion("Business_date in", values, "businessDate");
             return (Criteria) this;
         }
 
-        public Criteria andBusinessDateNotIn(List<String> values) {
+        public Criteria andBusinessDateNotIn(List<Long> values) {
             addCriterion("Business_date not in", values, "businessDate");
             return (Criteria) this;
         }
 
-        public Criteria andBusinessDateBetween(String value1, String value2) {
+        public Criteria andBusinessDateBetween(Long value1, Long value2) {
             addCriterion("Business_date between", value1, value2, "businessDate");
             return (Criteria) this;
         }
 
-        public Criteria andBusinessDateNotBetween(String value1, String value2) {
+        public Criteria andBusinessDateNotBetween(Long value1, Long value2) {
             addCriterion("Business_date not between", value1, value2, "businessDate");
             return (Criteria) this;
         }

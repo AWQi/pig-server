@@ -413,6 +413,76 @@ public class PigstyExample {
             addCriterion("Illumination not between", value1, value2, "illumination");
             return (Criteria) this;
         }
+
+        public Criteria andPigTypeIsNull() {
+            addCriterion("pig_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPigTypeIsNotNull() {
+            addCriterion("pig_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPigTypeEqualTo(String value) {
+            addCriterion("pig_type =", value, "pigType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPigTypeNotEqualTo(String value) {
+            addCriterion("pig_type <>", value, "pigType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPigTypeGreaterThan(String value) {
+            addCriterion("pig_type >", value, "pigType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPigTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("pig_type >=", value, "pigType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPigTypeLessThan(String value) {
+            addCriterion("pig_type <", value, "pigType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPigTypeLessThanOrEqualTo(String value) {
+            addCriterion("pig_type <=", value, "pigType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPigTypeLike(String value) {
+            addCriterion("pig_type like", value, "pigType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPigTypeNotLike(String value) {
+            addCriterion("pig_type not like", value, "pigType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPigTypeIn(List<String> values) {
+            addCriterion("pig_type in", values, "pigType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPigTypeNotIn(List<String> values) {
+            addCriterion("pig_type not in", values, "pigType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPigTypeBetween(String value1, String value2) {
+            addCriterion("pig_type between", value1, value2, "pigType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPigTypeNotBetween(String value1, String value2) {
+            addCriterion("pig_type not between", value1, value2, "pigType");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

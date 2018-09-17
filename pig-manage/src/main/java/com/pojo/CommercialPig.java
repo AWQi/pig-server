@@ -15,7 +15,7 @@ public class CommercialPig {
 
     private Integer number;
 
-    private String businessDate;
+    private Long businessDate;
 
     public Integer getBatchNumber() {
         return batchNumber;
@@ -73,11 +73,11 @@ public class CommercialPig {
         this.number = number;
     }
 
-    public String getBusinessDate() {
+    public Long getBusinessDate() {
         return businessDate;
     }
 
-    public void setBusinessDate(String businessDate) {
-        this.businessDate = businessDate == null ? null : businessDate.trim();
+    public void setBusinessDate(Long businessDate) {
+        this.businessDate = businessDate;
     }
 }

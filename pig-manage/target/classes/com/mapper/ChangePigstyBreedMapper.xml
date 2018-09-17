@@ -6,7 +6,7 @@
     <result column="earlabel" property="earlabel" jdbcType="INTEGER" />
     <result column="out_pigsty" property="outPigsty" jdbcType="INTEGER" />
     <result column="in_pigsty" property="inPigsty" jdbcType="INTEGER" />
-    <result column="turngroup_date" property="turngroupDate" jdbcType="CHAR" />
+    <result column="turngroup_date" property="turngroupDate" jdbcType="BIGINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -103,7 +103,7 @@
     insert into change_pigsty_breed (id, earlabel, out_pigsty, 
       in_pigsty, turngroup_date)
     values (#{id,jdbcType=INTEGER}, #{earlabel,jdbcType=INTEGER}, #{outPigsty,jdbcType=INTEGER}, 
-      #{inPigsty,jdbcType=INTEGER}, #{turngroupDate,jdbcType=CHAR})
+      #{inPigsty,jdbcType=INTEGER}, #{turngroupDate,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.pojo.ChangePigstyBreed" >
     insert into change_pigsty_breed
@@ -138,7 +138,7 @@
         #{inPigsty,jdbcType=INTEGER},
       </if>
       <if test="turngroupDate != null" >
-        #{turngroupDate,jdbcType=CHAR},
+        #{turngroupDate,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -164,7 +164,7 @@
         in_pigsty = #{record.inPigsty,jdbcType=INTEGER},
       </if>
       <if test="record.turngroupDate != null" >
-        turngroup_date = #{record.turngroupDate,jdbcType=CHAR},
+        turngroup_date = #{record.turngroupDate,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -177,7 +177,7 @@
       earlabel = #{record.earlabel,jdbcType=INTEGER},
       out_pigsty = #{record.outPigsty,jdbcType=INTEGER},
       in_pigsty = #{record.inPigsty,jdbcType=INTEGER},
-      turngroup_date = #{record.turngroupDate,jdbcType=CHAR}
+      turngroup_date = #{record.turngroupDate,jdbcType=BIGINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -195,7 +195,7 @@
         in_pigsty = #{inPigsty,jdbcType=INTEGER},
       </if>
       <if test="turngroupDate != null" >
-        turngroup_date = #{turngroupDate,jdbcType=CHAR},
+        turngroup_date = #{turngroupDate,jdbcType=BIGINT},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -205,7 +205,7 @@
     set earlabel = #{earlabel,jdbcType=INTEGER},
       out_pigsty = #{outPigsty,jdbcType=INTEGER},
       in_pigsty = #{inPigsty,jdbcType=INTEGER},
-      turngroup_date = #{turngroupDate,jdbcType=CHAR}
+      turngroup_date = #{turngroupDate,jdbcType=BIGINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

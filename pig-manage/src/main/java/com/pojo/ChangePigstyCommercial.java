@@ -1,6 +1,8 @@
 package com.pojo;
 
 public class ChangePigstyCommercial {
+    private Integer id;
+
     private String turngroupType;
 
     private Integer batchNumber;
@@ -13,7 +15,15 @@ public class ChangePigstyCommercial {
 
     private Float totalWeight;
 
-    private String data;
+    private Long date;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getTurngroupType() {
         return turngroupType;
@@ -63,11 +73,11 @@ public class ChangePigstyCommercial {
         this.totalWeight = totalWeight;
     }
 
-    public String getData() {
-        return data;
+    public Long getDate() {
+        return date;
     }
 
-    public void setData(String data) {
-        this.data = data == null ? null : data.trim();
+    public void setDate(Long date) {
+        this.date = date;
     }
 }

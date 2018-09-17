@@ -7,7 +7,7 @@ public class Immune {
 
     private Integer earlabel;
 
-    private String immuneDate;
+    private Long immuneDate;
 
     private String vaccine;
 
@@ -45,12 +45,12 @@ public class Immune {
         this.earlabel = earlabel;
     }
 
-    public String getImmuneDate() {
+    public Long getImmuneDate() {
         return immuneDate;
     }
 
-    public void setImmuneDate(String immuneDate) {
-        this.immuneDate = immuneDate == null ? null : immuneDate.trim();
+    public void setImmuneDate(Long immuneDate) {
+        this.immuneDate = immuneDate;
     }
 
     public String getVaccine() {

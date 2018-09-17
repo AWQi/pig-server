@@ -8,7 +8,7 @@
     <result column="pigsty_message" property="pigstyMessage" jdbcType="CHAR" />
     <result column="breeder" property="breeder" jdbcType="CHAR" />
     <result column="breeder_way" property="breederWay" jdbcType="CHAR" />
-    <result column="breeder_date" property="breederDate" jdbcType="CHAR" />
+    <result column="breeder_date" property="breederDate" jdbcType="BIGINT" />
     <result column="remark" property="remark" jdbcType="CHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -109,7 +109,7 @@
       breeder_date, remark)
     values (#{id,jdbcType=INTEGER}, #{earlabelFemale,jdbcType=INTEGER}, #{earlabelMale,jdbcType=INTEGER}, 
       #{pigstyMessage,jdbcType=CHAR}, #{breeder,jdbcType=CHAR}, #{breederWay,jdbcType=CHAR}, 
-      #{breederDate,jdbcType=CHAR}, #{remark,jdbcType=CHAR})
+      #{breederDate,jdbcType=BIGINT}, #{remark,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.pojo.SwineBreeding" >
     insert into swine_breeding
@@ -159,7 +159,7 @@
         #{breederWay,jdbcType=CHAR},
       </if>
       <if test="breederDate != null" >
-        #{breederDate,jdbcType=CHAR},
+        #{breederDate,jdbcType=BIGINT},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=CHAR},
@@ -194,7 +194,7 @@
         breeder_way = #{record.breederWay,jdbcType=CHAR},
       </if>
       <if test="record.breederDate != null" >
-        breeder_date = #{record.breederDate,jdbcType=CHAR},
+        breeder_date = #{record.breederDate,jdbcType=BIGINT},
       </if>
       <if test="record.remark != null" >
         remark = #{record.remark,jdbcType=CHAR},
@@ -212,7 +212,7 @@
       pigsty_message = #{record.pigstyMessage,jdbcType=CHAR},
       breeder = #{record.breeder,jdbcType=CHAR},
       breeder_way = #{record.breederWay,jdbcType=CHAR},
-      breeder_date = #{record.breederDate,jdbcType=CHAR},
+      breeder_date = #{record.breederDate,jdbcType=BIGINT},
       remark = #{record.remark,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -237,7 +237,7 @@
         breeder_way = #{breederWay,jdbcType=CHAR},
       </if>
       <if test="breederDate != null" >
-        breeder_date = #{breederDate,jdbcType=CHAR},
+        breeder_date = #{breederDate,jdbcType=BIGINT},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=CHAR},
@@ -252,7 +252,7 @@
       pigsty_message = #{pigstyMessage,jdbcType=CHAR},
       breeder = #{breeder,jdbcType=CHAR},
       breeder_way = #{breederWay,jdbcType=CHAR},
-      breeder_date = #{breederDate,jdbcType=CHAR},
+      breeder_date = #{breederDate,jdbcType=BIGINT},
       remark = #{remark,jdbcType=CHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

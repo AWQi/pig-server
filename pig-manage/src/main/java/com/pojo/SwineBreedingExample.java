@@ -504,62 +504,52 @@ public class SwineBreedingExample {
             return (Criteria) this;
         }
 
-        public Criteria andBreederDateEqualTo(String value) {
+        public Criteria andBreederDateEqualTo(Long value) {
             addCriterion("breeder_date =", value, "breederDate");
             return (Criteria) this;
         }
 
-        public Criteria andBreederDateNotEqualTo(String value) {
+        public Criteria andBreederDateNotEqualTo(Long value) {
             addCriterion("breeder_date <>", value, "breederDate");
             return (Criteria) this;
         }
 
-        public Criteria andBreederDateGreaterThan(String value) {
+        public Criteria andBreederDateGreaterThan(Long value) {
             addCriterion("breeder_date >", value, "breederDate");
             return (Criteria) this;
         }
 
-        public Criteria andBreederDateGreaterThanOrEqualTo(String value) {
+        public Criteria andBreederDateGreaterThanOrEqualTo(Long value) {
             addCriterion("breeder_date >=", value, "breederDate");
             return (Criteria) this;
         }
 
-        public Criteria andBreederDateLessThan(String value) {
+        public Criteria andBreederDateLessThan(Long value) {
             addCriterion("breeder_date <", value, "breederDate");
             return (Criteria) this;
         }
 
-        public Criteria andBreederDateLessThanOrEqualTo(String value) {
+        public Criteria andBreederDateLessThanOrEqualTo(Long value) {
             addCriterion("breeder_date <=", value, "breederDate");
             return (Criteria) this;
         }
 
-        public Criteria andBreederDateLike(String value) {
-            addCriterion("breeder_date like", value, "breederDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andBreederDateNotLike(String value) {
-            addCriterion("breeder_date not like", value, "breederDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andBreederDateIn(List<String> values) {
+        public Criteria andBreederDateIn(List<Long> values) {
             addCriterion("breeder_date in", values, "breederDate");
             return (Criteria) this;
         }
 
-        public Criteria andBreederDateNotIn(List<String> values) {
+        public Criteria andBreederDateNotIn(List<Long> values) {
             addCriterion("breeder_date not in", values, "breederDate");
             return (Criteria) this;
         }
 
-        public Criteria andBreederDateBetween(String value1, String value2) {
+        public Criteria andBreederDateBetween(Long value1, Long value2) {
             addCriterion("breeder_date between", value1, value2, "breederDate");
             return (Criteria) this;
         }
 
-        public Criteria andBreederDateNotBetween(String value1, String value2) {
+        public Criteria andBreederDateNotBetween(Long value1, Long value2) {
             addCriterion("breeder_date not between", value1, value2, "breederDate");
             return (Criteria) this;
         }

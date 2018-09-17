@@ -1,0 +1,8 @@
+127.0.0.1 - - [17/Sep/2018:13:11:18 +0800] "POST /BreedingPig/queryAll HTTP/1.1" 200 746 http-bio-8080-exec-1 575
+127.0.0.1 - - [17/Sep/2018:13:11:20 +0800] "POST /Pigsty/queryAll HTTP/1.1" 200 271 http-bio-8080-exec-3 27
+127.0.0.1 - - [17/Sep/2018:13:12:34 +0800] "POST /BreedingPig/queryAll HTTP/1.1" 200 746 http-bio-8080-exec-5 9
+127.0.0.1 - - [17/Sep/2018:13:12:35 +0800] "POST /Pigsty/queryAll HTTP/1.1" 200 271 http-bio-8080-exec-7 4
+127.0.0.1 - - [17/Sep/2018:13:20:05 +0800] "POST /BreedingPig/queryAll HTTP/1.1" 200 746 http-bio-8080-exec-9 5
+127.0.0.1 - - [17/Sep/2018:13:20:15 +0800] "POST /Pigsty/queryAll HTTP/1.1" 200 271 http-bio-8080-exec-1 4
+127.0.0.1 - - [17/Sep/2018:13:28:13 +0800] "POST /BreedingPig/queryAll HTTP/1.1" 200 746 http-bio-8080-exec-2 9
+127.0.0.1 - - [17/Sep/2018:13:28:15 +0800] "POST /Pigsty/queryAll HTTP/1.1" 200 271 http-bio-8080-exec-5 3

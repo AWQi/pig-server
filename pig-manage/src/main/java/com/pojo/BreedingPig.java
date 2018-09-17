@@ -1,7 +1,5 @@
 package com.pojo;
 
-import java.util.Date;
-
 public class BreedingPig {
     private Integer earlabel;
 
@@ -11,11 +9,13 @@ public class BreedingPig {
 
     private String pigType;
 
-    private Date birthdate;
+    private Long birthdate;
 
-    private Date entergroupDate;
+    private Long entergroupDate;
 
     private String pigState;
+
+    private Integer gender;
 
     public Integer getEarlabel() {
         return earlabel;
@@ -49,19 +49,19 @@ public class BreedingPig {
         this.pigType = pigType == null ? null : pigType.trim();
     }
 
-    public Date getBirthdate() {
+    public Long getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(Long birthdate) {
         this.birthdate = birthdate;
     }
 
-    public Date getEntergroupDate() {
+    public Long getEntergroupDate() {
         return entergroupDate;
     }
 
-    public void setEntergroupDate(Date entergroupDate) {
+    public void setEntergroupDate(Long entergroupDate) {
         this.entergroupDate = entergroupDate;
     }
 
@@ -71,5 +71,13 @@ public class BreedingPig {
 
     public void setPigState(String pigState) {
         this.pigState = pigState == null ? null : pigState.trim();
+    }
+
+    public Integer getGender() {
+        return gender;
+    }
+
+    public void setGender(Integer gender) {
+        this.gender = gender;
     }
 }

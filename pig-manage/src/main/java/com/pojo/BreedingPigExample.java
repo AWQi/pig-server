@@ -1,8 +1,6 @@
 package com.pojo;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class BreedingPigExample {
@@ -104,32 +102,6 @@ public class BreedingPigExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andEarlabelIsNull() {
@@ -402,53 +374,53 @@ public class BreedingPigExample {
             return (Criteria) this;
         }
 
-        public Criteria andBirthdateEqualTo(Date value) {
-            addCriterionForJDBCDate("birthdate =", value, "birthdate");
+        public Criteria andBirthdateEqualTo(Long value) {
+            addCriterion("birthdate =", value, "birthdate");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("birthdate <>", value, "birthdate");
+        public Criteria andBirthdateNotEqualTo(Long value) {
+            addCriterion("birthdate <>", value, "birthdate");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdateGreaterThan(Date value) {
-            addCriterionForJDBCDate("birthdate >", value, "birthdate");
+        public Criteria andBirthdateGreaterThan(Long value) {
+            addCriterion("birthdate >", value, "birthdate");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("birthdate >=", value, "birthdate");
+        public Criteria andBirthdateGreaterThanOrEqualTo(Long value) {
+            addCriterion("birthdate >=", value, "birthdate");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdateLessThan(Date value) {
-            addCriterionForJDBCDate("birthdate <", value, "birthdate");
+        public Criteria andBirthdateLessThan(Long value) {
+            addCriterion("birthdate <", value, "birthdate");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("birthdate <=", value, "birthdate");
+        public Criteria andBirthdateLessThanOrEqualTo(Long value) {
+            addCriterion("birthdate <=", value, "birthdate");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdateIn(List<Date> values) {
-            addCriterionForJDBCDate("birthdate in", values, "birthdate");
+        public Criteria andBirthdateIn(List<Long> values) {
+            addCriterion("birthdate in", values, "birthdate");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("birthdate not in", values, "birthdate");
+        public Criteria andBirthdateNotIn(List<Long> values) {
+            addCriterion("birthdate not in", values, "birthdate");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("birthdate between", value1, value2, "birthdate");
+        public Criteria andBirthdateBetween(Long value1, Long value2) {
+            addCriterion("birthdate between", value1, value2, "birthdate");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("birthdate not between", value1, value2, "birthdate");
+        public Criteria andBirthdateNotBetween(Long value1, Long value2) {
+            addCriterion("birthdate not between", value1, value2, "birthdate");
             return (Criteria) this;
         }
 
@@ -462,53 +434,53 @@ public class BreedingPigExample {
             return (Criteria) this;
         }
 
-        public Criteria andEntergroupDateEqualTo(Date value) {
-            addCriterionForJDBCDate("entergroup_date =", value, "entergroupDate");
+        public Criteria andEntergroupDateEqualTo(Long value) {
+            addCriterion("entergroup_date =", value, "entergroupDate");
             return (Criteria) this;
         }
 
-        public Criteria andEntergroupDateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("entergroup_date <>", value, "entergroupDate");
+        public Criteria andEntergroupDateNotEqualTo(Long value) {
+            addCriterion("entergroup_date <>", value, "entergroupDate");
             return (Criteria) this;
         }
 
-        public Criteria andEntergroupDateGreaterThan(Date value) {
-            addCriterionForJDBCDate("entergroup_date >", value, "entergroupDate");
+        public Criteria andEntergroupDateGreaterThan(Long value) {
+            addCriterion("entergroup_date >", value, "entergroupDate");
             return (Criteria) this;
         }
 
-        public Criteria andEntergroupDateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("entergroup_date >=", value, "entergroupDate");
+        public Criteria andEntergroupDateGreaterThanOrEqualTo(Long value) {
+            addCriterion("entergroup_date >=", value, "entergroupDate");
             return (Criteria) this;
         }
 
-        public Criteria andEntergroupDateLessThan(Date value) {
-            addCriterionForJDBCDate("entergroup_date <", value, "entergroupDate");
+        public Criteria andEntergroupDateLessThan(Long value) {
+            addCriterion("entergroup_date <", value, "entergroupDate");
             return (Criteria) this;
         }
 
-        public Criteria andEntergroupDateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("entergroup_date <=", value, "entergroupDate");
+        public Criteria andEntergroupDateLessThanOrEqualTo(Long value) {
+            addCriterion("entergroup_date <=", value, "entergroupDate");
             return (Criteria) this;
         }
 
-        public Criteria andEntergroupDateIn(List<Date> values) {
-            addCriterionForJDBCDate("entergroup_date in", values, "entergroupDate");
+        public Criteria andEntergroupDateIn(List<Long> values) {
+            addCriterion("entergroup_date in", values, "entergroupDate");
             return (Criteria) this;
         }
 
-        public Criteria andEntergroupDateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("entergroup_date not in", values, "entergroupDate");
+        public Criteria andEntergroupDateNotIn(List<Long> values) {
+            addCriterion("entergroup_date not in", values, "entergroupDate");
             return (Criteria) this;
         }
 
-        public Criteria andEntergroupDateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("entergroup_date between", value1, value2, "entergroupDate");
+        public Criteria andEntergroupDateBetween(Long value1, Long value2) {
+            addCriterion("entergroup_date between", value1, value2, "entergroupDate");
             return (Criteria) this;
         }
 
-        public Criteria andEntergroupDateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("entergroup_date not between", value1, value2, "entergroupDate");
+        public Criteria andEntergroupDateNotBetween(Long value1, Long value2) {
+            addCriterion("entergroup_date not between", value1, value2, "entergroupDate");
             return (Criteria) this;
         }
 
@@ -579,6 +551,66 @@ public class BreedingPigExample {
 
         public Criteria andPigStateNotBetween(String value1, String value2) {
             addCriterion("pig_state not between", value1, value2, "pigState");
+            return (Criteria) this;
+        }
+
+        public Criteria andGenderIsNull() {
+            addCriterion("gender is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGenderIsNotNull() {
+            addCriterion("gender is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGenderEqualTo(Integer value) {
+            addCriterion("gender =", value, "gender");
+            return (Criteria) this;
+        }
+
+        public Criteria andGenderNotEqualTo(Integer value) {
+            addCriterion("gender <>", value, "gender");
+            return (Criteria) this;
+        }
+
+        public Criteria andGenderGreaterThan(Integer value) {
+            addCriterion("gender >", value, "gender");
+            return (Criteria) this;
+        }
+
+        public Criteria andGenderGreaterThanOrEqualTo(Integer value) {
+            addCriterion("gender >=", value, "gender");
+            return (Criteria) this;
+        }
+
+        public Criteria andGenderLessThan(Integer value) {
+            addCriterion("gender <", value, "gender");
+            return (Criteria) this;
+        }
+
+        public Criteria andGenderLessThanOrEqualTo(Integer value) {
+            addCriterion("gender <=", value, "gender");
+            return (Criteria) this;
+        }
+
+        public Criteria andGenderIn(List<Integer> values) {
+            addCriterion("gender in", values, "gender");
+            return (Criteria) this;
+        }
+
+        public Criteria andGenderNotIn(List<Integer> values) {
+            addCriterion("gender not in", values, "gender");
+            return (Criteria) this;
+        }
+
+        public Criteria andGenderBetween(Integer value1, Integer value2) {
+            addCriterion("gender between", value1, value2, "gender");
+            return (Criteria) this;
+        }
+
+        public Criteria andGenderNotBetween(Integer value1, Integer value2) {
+            addCriterion("gender not between", value1, value2, "gender");
             return (Criteria) this;
         }
     }

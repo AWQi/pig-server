@@ -764,62 +764,52 @@ public class SaleExample {
             return (Criteria) this;
         }
 
-        public Criteria andSalesDateEqualTo(String value) {
+        public Criteria andSalesDateEqualTo(Long value) {
             addCriterion("sales_date =", value, "salesDate");
             return (Criteria) this;
         }
 
-        public Criteria andSalesDateNotEqualTo(String value) {
+        public Criteria andSalesDateNotEqualTo(Long value) {
             addCriterion("sales_date <>", value, "salesDate");
             return (Criteria) this;
         }
 
-        public Criteria andSalesDateGreaterThan(String value) {
+        public Criteria andSalesDateGreaterThan(Long value) {
             addCriterion("sales_date >", value, "salesDate");
             return (Criteria) this;
         }
 
-        public Criteria andSalesDateGreaterThanOrEqualTo(String value) {
+        public Criteria andSalesDateGreaterThanOrEqualTo(Long value) {
             addCriterion("sales_date >=", value, "salesDate");
             return (Criteria) this;
         }
 
-        public Criteria andSalesDateLessThan(String value) {
+        public Criteria andSalesDateLessThan(Long value) {
             addCriterion("sales_date <", value, "salesDate");
             return (Criteria) this;
         }
 
-        public Criteria andSalesDateLessThanOrEqualTo(String value) {
+        public Criteria andSalesDateLessThanOrEqualTo(Long value) {
             addCriterion("sales_date <=", value, "salesDate");
             return (Criteria) this;
         }
 
-        public Criteria andSalesDateLike(String value) {
-            addCriterion("sales_date like", value, "salesDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andSalesDateNotLike(String value) {
-            addCriterion("sales_date not like", value, "salesDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andSalesDateIn(List<String> values) {
+        public Criteria andSalesDateIn(List<Long> values) {
             addCriterion("sales_date in", values, "salesDate");
             return (Criteria) this;
         }
 
-        public Criteria andSalesDateNotIn(List<String> values) {
+        public Criteria andSalesDateNotIn(List<Long> values) {
             addCriterion("sales_date not in", values, "salesDate");
             return (Criteria) this;
         }
 
-        public Criteria andSalesDateBetween(String value1, String value2) {
+        public Criteria andSalesDateBetween(Long value1, Long value2) {
             addCriterion("sales_date between", value1, value2, "salesDate");
             return (Criteria) this;
         }
 
-        public Criteria andSalesDateNotBetween(String value1, String value2) {
+        public Criteria andSalesDateNotBetween(Long value1, Long value2) {
             addCriterion("sales_date not between", value1, value2, "salesDate");
             return (Criteria) this;
         }

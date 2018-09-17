@@ -5,7 +5,7 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="immune_name" property="immuneName" jdbcType="CHAR" />
     <result column="earlabel" property="earlabel" jdbcType="INTEGER" />
-    <result column="immune_date" property="immuneDate" jdbcType="CHAR" />
+    <result column="immune_date" property="immuneDate" jdbcType="BIGINT" />
     <result column="vaccine" property="vaccine" jdbcType="CHAR" />
     <result column="unit_dose" property="unitDose" jdbcType="REAL" />
     <result column="total_dose" property="totalDose" jdbcType="REAL" />
@@ -111,7 +111,7 @@
       total_dose, prickle, immune_type, 
       operator)
     values (#{id,jdbcType=INTEGER}, #{immuneName,jdbcType=CHAR}, #{earlabel,jdbcType=INTEGER}, 
-      #{immuneDate,jdbcType=CHAR}, #{vaccine,jdbcType=CHAR}, #{unitDose,jdbcType=REAL}, 
+      #{immuneDate,jdbcType=BIGINT}, #{vaccine,jdbcType=CHAR}, #{unitDose,jdbcType=REAL}, 
       #{totalDose,jdbcType=REAL}, #{prickle,jdbcType=CHAR}, #{immuneType,jdbcType=CHAR}, 
       #{operator,jdbcType=CHAR})
   </insert>
@@ -160,7 +160,7 @@
         #{earlabel,jdbcType=INTEGER},
       </if>
       <if test="immuneDate != null" >
-        #{immuneDate,jdbcType=CHAR},
+        #{immuneDate,jdbcType=BIGINT},
       </if>
       <if test="vaccine != null" >
         #{vaccine,jdbcType=CHAR},
@@ -201,7 +201,7 @@
         earlabel = #{record.earlabel,jdbcType=INTEGER},
       </if>
       <if test="record.immuneDate != null" >
-        immune_date = #{record.immuneDate,jdbcType=CHAR},
+        immune_date = #{record.immuneDate,jdbcType=BIGINT},
       </if>
       <if test="record.vaccine != null" >
         vaccine = #{record.vaccine,jdbcType=CHAR},
@@ -231,7 +231,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       immune_name = #{record.immuneName,jdbcType=CHAR},
       earlabel = #{record.earlabel,jdbcType=INTEGER},
-      immune_date = #{record.immuneDate,jdbcType=CHAR},
+      immune_date = #{record.immuneDate,jdbcType=BIGINT},
       vaccine = #{record.vaccine,jdbcType=CHAR},
       unit_dose = #{record.unitDose,jdbcType=REAL},
       total_dose = #{record.totalDose,jdbcType=REAL},
@@ -252,7 +252,7 @@
         earlabel = #{earlabel,jdbcType=INTEGER},
       </if>
       <if test="immuneDate != null" >
-        immune_date = #{immuneDate,jdbcType=CHAR},
+        immune_date = #{immuneDate,jdbcType=BIGINT},
       </if>
       <if test="vaccine != null" >
         vaccine = #{vaccine,jdbcType=CHAR},
@@ -279,7 +279,7 @@
     update immune
     set immune_name = #{immuneName,jdbcType=CHAR},
       earlabel = #{earlabel,jdbcType=INTEGER},
-      immune_date = #{immuneDate,jdbcType=CHAR},
+      immune_date = #{immuneDate,jdbcType=BIGINT},
       vaccine = #{vaccine,jdbcType=CHAR},
       unit_dose = #{unitDose,jdbcType=REAL},
       total_dose = #{totalDose,jdbcType=REAL},

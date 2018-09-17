@@ -354,62 +354,52 @@ public class ChangePigstyBreedExample {
             return (Criteria) this;
         }
 
-        public Criteria andTurngroupDateEqualTo(String value) {
+        public Criteria andTurngroupDateEqualTo(Long value) {
             addCriterion("turngroup_date =", value, "turngroupDate");
             return (Criteria) this;
         }
 
-        public Criteria andTurngroupDateNotEqualTo(String value) {
+        public Criteria andTurngroupDateNotEqualTo(Long value) {
             addCriterion("turngroup_date <>", value, "turngroupDate");
             return (Criteria) this;
         }
 
-        public Criteria andTurngroupDateGreaterThan(String value) {
+        public Criteria andTurngroupDateGreaterThan(Long value) {
             addCriterion("turngroup_date >", value, "turngroupDate");
             return (Criteria) this;
         }
 
-        public Criteria andTurngroupDateGreaterThanOrEqualTo(String value) {
+        public Criteria andTurngroupDateGreaterThanOrEqualTo(Long value) {
             addCriterion("turngroup_date >=", value, "turngroupDate");
             return (Criteria) this;
         }
 
-        public Criteria andTurngroupDateLessThan(String value) {
+        public Criteria andTurngroupDateLessThan(Long value) {
             addCriterion("turngroup_date <", value, "turngroupDate");
             return (Criteria) this;
         }
 
-        public Criteria andTurngroupDateLessThanOrEqualTo(String value) {
+        public Criteria andTurngroupDateLessThanOrEqualTo(Long value) {
             addCriterion("turngroup_date <=", value, "turngroupDate");
             return (Criteria) this;
         }
 
-        public Criteria andTurngroupDateLike(String value) {
-            addCriterion("turngroup_date like", value, "turngroupDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andTurngroupDateNotLike(String value) {
-            addCriterion("turngroup_date not like", value, "turngroupDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andTurngroupDateIn(List<String> values) {
+        public Criteria andTurngroupDateIn(List<Long> values) {
             addCriterion("turngroup_date in", values, "turngroupDate");
             return (Criteria) this;
         }
 
-        public Criteria andTurngroupDateNotIn(List<String> values) {
+        public Criteria andTurngroupDateNotIn(List<Long> values) {
             addCriterion("turngroup_date not in", values, "turngroupDate");
             return (Criteria) this;
         }
 
-        public Criteria andTurngroupDateBetween(String value1, String value2) {
+        public Criteria andTurngroupDateBetween(Long value1, Long value2) {
             addCriterion("turngroup_date between", value1, value2, "turngroupDate");
             return (Criteria) this;
         }
 
-        public Criteria andTurngroupDateNotBetween(String value1, String value2) {
+        public Criteria andTurngroupDateNotBetween(Long value1, Long value2) {
             addCriterion("turngroup_date not between", value1, value2, "turngroupDate");
             return (Criteria) this;
         }

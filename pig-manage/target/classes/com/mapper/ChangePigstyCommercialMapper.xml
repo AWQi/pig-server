@@ -2,13 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mapper.ChangePigstyCommercialMapper" >
   <resultMap id="BaseResultMap" type="com.pojo.ChangePigstyCommercial" >
+    <id column="id" property="id" jdbcType="INTEGER" />
     <result column="turngroup_type" property="turngroupType" jdbcType="CHAR" />
     <result column="batch_number" property="batchNumber" jdbcType="INTEGER" />
     <result column="out_pigsty" property="outPigsty" jdbcType="INTEGER" />
     <result column="number" property="number" jdbcType="INTEGER" />
     <result column="in_pigsty" property="inPigsty" jdbcType="INTEGER" />
     <result column="total_weight" property="totalWeight" jdbcType="REAL" />
-    <result column="data" property="data" jdbcType="CHAR" />
+    <result column="date" property="date" jdbcType="BIGINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    turngroup_type, batch_number, out_pigsty, number, in_pigsty, total_weight, data
+    id, turngroup_type, batch_number, out_pigsty, number, in_pigsty, total_weight, date
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pojo.ChangePigstyCommercialExample" >
     select
@@ -85,6 +86,16 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from change_pigsty_commercial
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from change_pigsty_commercial
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
   <delete id="deleteByExample" parameterType="com.pojo.ChangePigstyCommercialExample" >
     delete from change_pigsty_commercial
     <if test="_parameter != null" >
@@ -92,16 +103,19 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.pojo.ChangePigstyCommercial" >
-    insert into change_pigsty_commercial (turngroup_type, batch_number, out_pigsty, 
-      number, in_pigsty, total_weight, 
-      data)
-    values (#{turngroupType,jdbcType=CHAR}, #{batchNumber,jdbcType=INTEGER}, #{outPigsty,jdbcType=INTEGER}, 
-      #{number,jdbcType=INTEGER}, #{inPigsty,jdbcType=INTEGER}, #{totalWeight,jdbcType=REAL}, 
-      #{data,jdbcType=CHAR})
+    insert into change_pigsty_commercial (id, turngroup_type, batch_number, 
+      out_pigsty, number, in_pigsty, 
+      total_weight, date)
+    values (#{id,jdbcType=INTEGER}, #{turngroupType,jdbcType=CHAR}, #{batchNumber,jdbcType=INTEGER}, 
+      #{outPigsty,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}, #{inPigsty,jdbcType=INTEGER}, 
+      #{totalWeight,jdbcType=REAL}, #{date,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.pojo.ChangePigstyCommercial" >
     insert into change_pigsty_commercial
     <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
       <if test="turngroupType != null" >
         turngroup_type,
       </if>
@@ -120,11 +134,14 @@
       <if test="totalWeight != null" >
         total_weight,
       </if>
-      <if test="data != null" >
-        data,
+      <if test="date != null" >
+        date,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
       <if test="turngroupType != null" >
         #{turngroupType,jdbcType=CHAR},
       </if>
@@ -143,8 +160,8 @@
       <if test="totalWeight != null" >
         #{totalWeight,jdbcType=REAL},
       </if>
-      <if test="data != null" >
-        #{data,jdbcType=CHAR},
+      <if test="date != null" >
+        #{date,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -157,6 +174,9 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update change_pigsty_commercial
     <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
       <if test="record.turngroupType != null" >
         turngroup_type = #{record.turngroupType,jdbcType=CHAR},
       </if>
@@ -175,8 +195,8 @@
       <if test="record.totalWeight != null" >
         total_weight = #{record.totalWeight,jdbcType=REAL},
       </if>
-      <if test="record.data != null" >
-        data = #{record.data,jdbcType=CHAR},
+      <if test="record.date != null" >
+        date = #{record.date,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -185,15 +205,54 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update change_pigsty_commercial
-    set turngroup_type = #{record.turngroupType,jdbcType=CHAR},
+    set id = #{record.id,jdbcType=INTEGER},
+      turngroup_type = #{record.turngroupType,jdbcType=CHAR},
       batch_number = #{record.batchNumber,jdbcType=INTEGER},
       out_pigsty = #{record.outPigsty,jdbcType=INTEGER},
       number = #{record.number,jdbcType=INTEGER},
       in_pigsty = #{record.inPigsty,jdbcType=INTEGER},
       total_weight = #{record.totalWeight,jdbcType=REAL},
-      data = #{record.data,jdbcType=CHAR}
+      date = #{record.date,jdbcType=BIGINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pojo.ChangePigstyCommercial" >
+    update change_pigsty_commercial
+    <set >
+      <if test="turngroupType != null" >
+        turngroup_type = #{turngroupType,jdbcType=CHAR},
+      </if>
+      <if test="batchNumber != null" >
+        batch_number = #{batchNumber,jdbcType=INTEGER},
+      </if>
+      <if test="outPigsty != null" >
+        out_pigsty = #{outPigsty,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="inPigsty != null" >
+        in_pigsty = #{inPigsty,jdbcType=INTEGER},
+      </if>
+      <if test="totalWeight != null" >
+        total_weight = #{totalWeight,jdbcType=REAL},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pojo.ChangePigstyCommercial" >
+    update change_pigsty_commercial
+    set turngroup_type = #{turngroupType,jdbcType=CHAR},
+      batch_number = #{batchNumber,jdbcType=INTEGER},
+      out_pigsty = #{outPigsty,jdbcType=INTEGER},
+      number = #{number,jdbcType=INTEGER},
+      in_pigsty = #{inPigsty,jdbcType=INTEGER},
+      total_weight = #{totalWeight,jdbcType=REAL},
+      date = #{date,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

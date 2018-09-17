@@ -9,7 +9,7 @@
     <result column="pig_type" property="pigType" jdbcType="CHAR" />
     <result column="age" property="age" jdbcType="INTEGER" />
     <result column="number" property="number" jdbcType="INTEGER" />
-    <result column="Business_date" property="businessDate" jdbcType="CHAR" />
+    <result column="Business_date" property="businessDate" jdbcType="BIGINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -108,7 +108,7 @@
       Business_date)
     values (#{batchNumber,jdbcType=INTEGER}, #{earlabel,jdbcType=INTEGER}, #{pigstyMessage,jdbcType=INTEGER}, 
       #{breeder,jdbcType=CHAR}, #{pigType,jdbcType=CHAR}, #{age,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}, 
-      #{businessDate,jdbcType=CHAR})
+      #{businessDate,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.pojo.CommercialPig" >
     insert into commercial_pig
@@ -161,7 +161,7 @@
         #{number,jdbcType=INTEGER},
       </if>
       <if test="businessDate != null" >
-        #{businessDate,jdbcType=CHAR},
+        #{businessDate,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -196,7 +196,7 @@
         number = #{record.number,jdbcType=INTEGER},
       </if>
       <if test="record.businessDate != null" >
-        Business_date = #{record.businessDate,jdbcType=CHAR},
+        Business_date = #{record.businessDate,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -212,7 +212,7 @@
       pig_type = #{record.pigType,jdbcType=CHAR},
       age = #{record.age,jdbcType=INTEGER},
       number = #{record.number,jdbcType=INTEGER},
-      Business_date = #{record.businessDate,jdbcType=CHAR}
+      Business_date = #{record.businessDate,jdbcType=BIGINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -239,7 +239,7 @@
         number = #{number,jdbcType=INTEGER},
       </if>
       <if test="businessDate != null" >
-        Business_date = #{businessDate,jdbcType=CHAR},
+        Business_date = #{businessDate,jdbcType=BIGINT},
       </if>
     </set>
     where batch_number = #{batchNumber,jdbcType=INTEGER}
@@ -252,7 +252,7 @@
       pig_type = #{pigType,jdbcType=CHAR},
       age = #{age,jdbcType=INTEGER},
       number = #{number,jdbcType=INTEGER},
-      Business_date = #{businessDate,jdbcType=CHAR}
+      Business_date = #{businessDate,jdbcType=BIGINT}
     where batch_number = #{batchNumber,jdbcType=INTEGER}
   </update>
 </mapper>

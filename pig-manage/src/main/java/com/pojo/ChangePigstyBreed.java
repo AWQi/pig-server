@@ -9,7 +9,7 @@ public class ChangePigstyBreed {
 
     private Integer inPigsty;
 
-    private String turngroupDate;
+    private Long turngroupDate;
 
     public Integer getId() {
         return id;
@@ -43,11 +43,11 @@ public class ChangePigstyBreed {
         this.inPigsty = inPigsty;
     }
 
-    public String getTurngroupDate() {
+    public Long getTurngroupDate() {
         return turngroupDate;
     }
 
-    public void setTurngroupDate(String turngroupDate) {
-        this.turngroupDate = turngroupDate == null ? null : turngroupDate.trim();
+    public void setTurngroupDate(Long turngroupDate) {
+        this.turngroupDate = turngroupDate;
     }
 }

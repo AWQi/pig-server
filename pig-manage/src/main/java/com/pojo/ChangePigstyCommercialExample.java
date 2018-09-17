@@ -104,6 +104,66 @@ public class ChangePigstyCommercialExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
+        public Criteria andIdIsNull() {
+            addCriterion("id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdIsNotNull() {
+            addCriterion("id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdEqualTo(Integer value) {
+            addCriterion("id =", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotEqualTo(Integer value) {
+            addCriterion("id <>", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdGreaterThan(Integer value) {
+            addCriterion("id >", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("id >=", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdLessThan(Integer value) {
+            addCriterion("id <", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdLessThanOrEqualTo(Integer value) {
+            addCriterion("id <=", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdIn(List<Integer> values) {
+            addCriterion("id in", values, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotIn(List<Integer> values) {
+            addCriterion("id not in", values, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdBetween(Integer value1, Integer value2) {
+            addCriterion("id between", value1, value2, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("id not between", value1, value2, "id");
+            return (Criteria) this;
+        }
+
         public Criteria andTurngroupTypeIsNull() {
             addCriterion("turngroup_type is null");
             return (Criteria) this;
@@ -474,73 +534,63 @@ public class ChangePigstyCommercialExample {
             return (Criteria) this;
         }
 
-        public Criteria andDataIsNull() {
-            addCriterion("data is null");
+        public Criteria andDateIsNull() {
+            addCriterion("date is null");
             return (Criteria) this;
         }
 
-        public Criteria andDataIsNotNull() {
-            addCriterion("data is not null");
+        public Criteria andDateIsNotNull() {
+            addCriterion("date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDataEqualTo(String value) {
-            addCriterion("data =", value, "data");
+        public Criteria andDateEqualTo(Long value) {
+            addCriterion("date =", value, "date");
             return (Criteria) this;
         }
 
-        public Criteria andDataNotEqualTo(String value) {
-            addCriterion("data <>", value, "data");
+        public Criteria andDateNotEqualTo(Long value) {
+            addCriterion("date <>", value, "date");
             return (Criteria) this;
         }
 
-        public Criteria andDataGreaterThan(String value) {
-            addCriterion("data >", value, "data");
+        public Criteria andDateGreaterThan(Long value) {
+            addCriterion("date >", value, "date");
             return (Criteria) this;
         }
 
-        public Criteria andDataGreaterThanOrEqualTo(String value) {
-            addCriterion("data >=", value, "data");
+        public Criteria andDateGreaterThanOrEqualTo(Long value) {
+            addCriterion("date >=", value, "date");
             return (Criteria) this;
         }
 
-        public Criteria andDataLessThan(String value) {
-            addCriterion("data <", value, "data");
+        public Criteria andDateLessThan(Long value) {
+            addCriterion("date <", value, "date");
             return (Criteria) this;
         }
 
-        public Criteria andDataLessThanOrEqualTo(String value) {
-            addCriterion("data <=", value, "data");
+        public Criteria andDateLessThanOrEqualTo(Long value) {
+            addCriterion("date <=", value, "date");
             return (Criteria) this;
         }
 
-        public Criteria andDataLike(String value) {
-            addCriterion("data like", value, "data");
+        public Criteria andDateIn(List<Long> values) {
+            addCriterion("date in", values, "date");
             return (Criteria) this;
         }
 
-        public Criteria andDataNotLike(String value) {
-            addCriterion("data not like", value, "data");
+        public Criteria andDateNotIn(List<Long> values) {
+            addCriterion("date not in", values, "date");
             return (Criteria) this;
         }
 
-        public Criteria andDataIn(List<String> values) {
-            addCriterion("data in", values, "data");
+        public Criteria andDateBetween(Long value1, Long value2) {
+            addCriterion("date between", value1, value2, "date");
             return (Criteria) this;
         }
 
-        public Criteria andDataNotIn(List<String> values) {
-            addCriterion("data not in", values, "data");
-            return (Criteria) this;
-        }
-
-        public Criteria andDataBetween(String value1, String value2) {
-            addCriterion("data between", value1, value2, "data");
-            return (Criteria) this;
-        }
-
-        public Criteria andDataNotBetween(String value1, String value2) {
-            addCriterion("data not between", value1, value2, "data");
+        public Criteria andDateNotBetween(Long value1, Long value2) {
+            addCriterion("date not between", value1, value2, "date");
             return (Criteria) this;
         }
     }

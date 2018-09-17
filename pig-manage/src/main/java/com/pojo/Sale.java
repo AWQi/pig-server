@@ -21,7 +21,7 @@ public class Sale {
 
     private String customerTel;
 
-    private String salesDate;
+    private Long salesDate;
 
     public Integer getId() {
         return id;
@@ -103,11 +103,11 @@ public class Sale {
         this.customerTel = customerTel == null ? null : customerTel.trim();
     }
 
-    public String getSalesDate() {
+    public Long getSalesDate() {
         return salesDate;
     }
 
-    public void setSalesDate(String salesDate) {
-        this.salesDate = salesDate == null ? null : salesDate.trim();
+    public void setSalesDate(Long salesDate) {
+        this.salesDate = salesDate;
     }
 }

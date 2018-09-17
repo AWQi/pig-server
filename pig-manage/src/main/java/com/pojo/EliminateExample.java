@@ -704,62 +704,52 @@ public class EliminateExample {
             return (Criteria) this;
         }
 
-        public Criteria andEliminateDateEqualTo(String value) {
+        public Criteria andEliminateDateEqualTo(Long value) {
             addCriterion("eliminate_date =", value, "eliminateDate");
             return (Criteria) this;
         }
 
-        public Criteria andEliminateDateNotEqualTo(String value) {
+        public Criteria andEliminateDateNotEqualTo(Long value) {
             addCriterion("eliminate_date <>", value, "eliminateDate");
             return (Criteria) this;
         }
 
-        public Criteria andEliminateDateGreaterThan(String value) {
+        public Criteria andEliminateDateGreaterThan(Long value) {
             addCriterion("eliminate_date >", value, "eliminateDate");
             return (Criteria) this;
         }
 
-        public Criteria andEliminateDateGreaterThanOrEqualTo(String value) {
+        public Criteria andEliminateDateGreaterThanOrEqualTo(Long value) {
             addCriterion("eliminate_date >=", value, "eliminateDate");
             return (Criteria) this;
         }
 
-        public Criteria andEliminateDateLessThan(String value) {
+        public Criteria andEliminateDateLessThan(Long value) {
             addCriterion("eliminate_date <", value, "eliminateDate");
             return (Criteria) this;
         }
 
-        public Criteria andEliminateDateLessThanOrEqualTo(String value) {
+        public Criteria andEliminateDateLessThanOrEqualTo(Long value) {
             addCriterion("eliminate_date <=", value, "eliminateDate");
             return (Criteria) this;
         }
 
-        public Criteria andEliminateDateLike(String value) {
-            addCriterion("eliminate_date like", value, "eliminateDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andEliminateDateNotLike(String value) {
-            addCriterion("eliminate_date not like", value, "eliminateDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andEliminateDateIn(List<String> values) {
+        public Criteria andEliminateDateIn(List<Long> values) {
             addCriterion("eliminate_date in", values, "eliminateDate");
             return (Criteria) this;
         }
 
-        public Criteria andEliminateDateNotIn(List<String> values) {
+        public Criteria andEliminateDateNotIn(List<Long> values) {
             addCriterion("eliminate_date not in", values, "eliminateDate");
             return (Criteria) this;
         }
 
-        public Criteria andEliminateDateBetween(String value1, String value2) {
+        public Criteria andEliminateDateBetween(Long value1, Long value2) {
             addCriterion("eliminate_date between", value1, value2, "eliminateDate");
             return (Criteria) this;
         }
 
-        public Criteria andEliminateDateNotBetween(String value1, String value2) {
+        public Criteria andEliminateDateNotBetween(Long value1, Long value2) {
             addCriterion("eliminate_date not between", value1, value2, "eliminateDate");
             return (Criteria) this;
         }

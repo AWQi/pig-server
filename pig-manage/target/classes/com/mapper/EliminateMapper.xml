@@ -11,7 +11,7 @@
     <result column="eliminate_reason" property="eliminateReason" jdbcType="CHAR" />
     <result column="number" property="number" jdbcType="INTEGER" />
     <result column="total_weight" property="totalWeight" jdbcType="REAL" />
-    <result column="eliminate_date" property="eliminateDate" jdbcType="CHAR" />
+    <result column="eliminate_date" property="eliminateDate" jdbcType="BIGINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -113,7 +113,7 @@
     values (#{id,jdbcType=INTEGER}, #{earlabel,jdbcType=INTEGER}, #{pigstyMessage,jdbcType=CHAR}, 
       #{pigType,jdbcType=CHAR}, #{eliminateStage,jdbcType=CHAR}, #{eliminateType,jdbcType=CHAR}, 
       #{eliminateReason,jdbcType=CHAR}, #{number,jdbcType=INTEGER}, #{totalWeight,jdbcType=REAL}, 
-      #{eliminateDate,jdbcType=CHAR})
+      #{eliminateDate,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.pojo.Eliminate" >
     insert into eliminate
@@ -178,7 +178,7 @@
         #{totalWeight,jdbcType=REAL},
       </if>
       <if test="eliminateDate != null" >
-        #{eliminateDate,jdbcType=CHAR},
+        #{eliminateDate,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -219,7 +219,7 @@
         total_weight = #{record.totalWeight,jdbcType=REAL},
       </if>
       <if test="record.eliminateDate != null" >
-        eliminate_date = #{record.eliminateDate,jdbcType=CHAR},
+        eliminate_date = #{record.eliminateDate,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -237,7 +237,7 @@
       eliminate_reason = #{record.eliminateReason,jdbcType=CHAR},
       number = #{record.number,jdbcType=INTEGER},
       total_weight = #{record.totalWeight,jdbcType=REAL},
-      eliminate_date = #{record.eliminateDate,jdbcType=CHAR}
+      eliminate_date = #{record.eliminateDate,jdbcType=BIGINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -270,7 +270,7 @@
         total_weight = #{totalWeight,jdbcType=REAL},
       </if>
       <if test="eliminateDate != null" >
-        eliminate_date = #{eliminateDate,jdbcType=CHAR},
+        eliminate_date = #{eliminateDate,jdbcType=BIGINT},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -285,7 +285,7 @@
       eliminate_reason = #{eliminateReason,jdbcType=CHAR},
       number = #{number,jdbcType=INTEGER},
       total_weight = #{totalWeight,jdbcType=REAL},
-      eliminate_date = #{eliminateDate,jdbcType=CHAR}
+      eliminate_date = #{eliminateDate,jdbcType=BIGINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

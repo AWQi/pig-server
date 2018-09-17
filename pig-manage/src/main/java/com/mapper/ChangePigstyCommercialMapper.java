@@ -10,13 +10,21 @@ public interface ChangePigstyCommercialMapper {
 
     int deleteByExample(ChangePigstyCommercialExample example);
 
+    int deleteByPrimaryKey(Integer id);
+
     int insert(ChangePigstyCommercial record);
 
     int insertSelective(ChangePigstyCommercial record);
 
     List<ChangePigstyCommercial> selectByExample(ChangePigstyCommercialExample example);
 
+    ChangePigstyCommercial selectByPrimaryKey(Integer id);
+
     int updateByExampleSelective(@Param("record") ChangePigstyCommercial record, @Param("example") ChangePigstyCommercialExample example);
 
     int updateByExample(@Param("record") ChangePigstyCommercial record, @Param("example") ChangePigstyCommercialExample example);
+
+    int updateByPrimaryKeySelective(ChangePigstyCommercial record);
+
+    int updateByPrimaryKey(ChangePigstyCommercial record);
 }

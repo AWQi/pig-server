@@ -19,7 +19,7 @@ public class Eliminate {
 
     private Float totalWeight;
 
-    private String eliminateDate;
+    private Long eliminateDate;
 
     public Integer getId() {
         return id;
@@ -93,11 +93,11 @@ public class Eliminate {
         this.totalWeight = totalWeight;
     }
 
-    public String getEliminateDate() {
+    public Long getEliminateDate() {
         return eliminateDate;
     }
 
-    public void setEliminateDate(String eliminateDate) {
-        this.eliminateDate = eliminateDate == null ? null : eliminateDate.trim();
+    public void setEliminateDate(Long eliminateDate) {
+        this.eliminateDate = eliminateDate;
     }
 }

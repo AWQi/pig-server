@@ -1,7 +1,10 @@
 com\pojo\SwineBreedingExample$GeneratedCriteria.class
+com\service\PigstyService.class
+com\controller\PigstyController.class
 com\pojo\SaleExample$GeneratedCriteria.class
 com\pojo\BreedingPigExample$GeneratedCriteria.class
 com\mapper\ImmuneMapper.class
+com\bean\BreedingPig.class
 com\pojo\SwineBreeding.class
 com\pojo\EliminateExample$GeneratedCriteria.class
 com\pojo\Sale.class
@@ -49,11 +52,13 @@ com\pojo\ChangePigstyBreedExample.class
 com\pojo\EliminateExample$Criterion.class
 com\service\EliminateService.class
 com\pojo\BreederExample.class
+com\service\BreederService.class
 com\pojo\Immune.class
 com\pojo\ImmuneExample$GeneratedCriteria.class
 com\pojo\ChangePigstyCommercialExample$Criteria.class
 com\pojo\ChangePigstyBreedExample$GeneratedCriteria.class
 com\pojo\SaleExample$Criteria.class
+com\controller\BreederController.class
 com\mapper\ChangePigstyCommercialMapper.class
 com\mapper\SwineBreedingMapper.class
 com\pojo\BreederExample$GeneratedCriteria.class
