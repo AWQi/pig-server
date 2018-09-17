@@ -56,8 +56,10 @@ public class WsServer extends WebSocketServer {
 		System.out.println(message);
 		ClientMsg msg = JsonUtils.jsonToPojo(message, ClientMsg.class);
 		if (msg.getEventType().equals("online")) { //  上线
-	    	ClientJoin(conn, msg.getMsg());
-	    	ClientManager.getInstance().sendMessageToClient(msg.getMsg(), "websocket已连接");
+			String clientId =  msg.getMsg();
+	    	ClientJoin(conn,clientId);
+	    	msg.msg = "websocket已连接";
+	    	ClientManager.getInstance().sendMessageToClient(clientId, JsonUtils.objectToJson(msg));
 		}
     
     }
@@ -85,6 +87,7 @@ public class WsServer extends WebSocketServer {
     private void ClientJoin(WebSocket conn,String ClientId){
         //WsPool.addClient(ClientId, conn);
     	ClientManager.getInstance().registClient(new Client(ClientId, conn));
+//    	ClientManager.getInstance().sendMessageToClient(ClientId,"websocket已连接");
     	System.out.println(ClientId+"上线");
     }
 

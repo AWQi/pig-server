@@ -3,6 +3,7 @@ package com.websocket;
 public class ClientMsg {
 public String eventType = "online";
 public String msg = "";
+public int no  = 0;
 public String getEventType() {
 	return eventType;
 }
@@ -14,6 +15,12 @@ public String getMsg() {
 }
 public void setMsg(String msg) {
 	this.msg = msg;
+}
+public int getNo() {
+	return no;
+}
+public void setNo(int no) {
+	this.no = no;
 }
 
 }
