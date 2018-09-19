@@ -1,7 +1,9 @@
 package com.pojo;
 
 public class BreedingPig {
-    private Integer earlabel;
+    private Integer id;
+
+    private String earlabel;
 
     private Integer pigstyMessage;
 
@@ -17,12 +19,20 @@ public class BreedingPig {
 
     private Integer gender;
 
-    public Integer getEarlabel() {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getEarlabel() {
         return earlabel;
     }
 
-    public void setEarlabel(Integer earlabel) {
-        this.earlabel = earlabel;
+    public void setEarlabel(String earlabel) {
+        this.earlabel = earlabel == null ? null : earlabel.trim();
     }
 
     public Integer getPigstyMessage() {

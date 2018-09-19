@@ -37,7 +37,7 @@ List<BreedingPig>list =breedingPigService.queryAll();
 
 @RequestMapping("queryByEarlabel")
 @ResponseBody
-public PigResult queryByEarlabel(@RequestParam("earlabel")Integer earlabel) {
+public PigResult queryByEarlabel(@RequestParam("earlabel")String earlabel) {
 		breedingPigService.queryByEarlabel(earlabel);
 		return new PigResult("ok");
 }

@@ -33,6 +33,7 @@ com\pojo\BreedingPigExample$Criteria.class
 com\pojo\CommercialPigExample$GeneratedCriteria.class
 com\task\AsyncTask$InternalHandler.class
 com\websocket\ClientManager.class
+com\port\PortUtil.class
 com\task\AsyncTask$SerialExecutor.class
 com\mapper\PigstyMapper.class
 com\pojo\ImmuneExample.class
@@ -43,7 +44,6 @@ com\pojo\BreederExample.class
 com\pojo\Immune.class
 com\pojo\ImmuneExample$GeneratedCriteria.class
 com\task\AsyncTask$4.class
-com\websocket\WebSocketFilter$MyAsyncTask.class
 com\mapper\SwineBreedingMapper.class
 com\pojo\BreederExample$GeneratedCriteria.class
 com\pojo\BreederExample$Criterion.class
@@ -52,6 +52,7 @@ com\pojo\SwineBreedingExample.class
 com\mapper\BreedingPigMapper.class
 com\pojo\BreederExample$Criteria.class
 com\pojo\SwineBreedingExample$GeneratedCriteria.class
+com\websocket\WebSocketFilter$1.class
 com\pojo\SaleExample$GeneratedCriteria.class
 com\mapper\ImmuneMapper.class
 com\task\AsyncTask$3.class
@@ -71,6 +72,7 @@ com\pojo\EliminateExample$Criteria.class
 com\pojo\SwineBreedingExample$Criteria.class
 com\websocket\TaskManager.class
 com\pojo\ImmuneExample$Criterion.class
+com\port\RFIDListener.class
 com\task\Handler.class
 com\pojo\ChangePigstyBreedExample$Criterion.class
 com\pojo\ImmuneExample$Criteria.class

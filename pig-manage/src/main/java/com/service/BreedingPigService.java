@@ -50,7 +50,7 @@ private SwineBreedingMapper swineBreedingMapper;
  * @param earlabel
  * @return
  */
-	public BreedingPig queryByEarlabel(Integer earlabel) {
+	public BreedingPig queryByEarlabel(String earlabel) {
 		BreedingPigExample example = new BreedingPigExample();
 		Criteria criteria = example.createCriteria();
 		criteria.andEarlabelEqualTo(earlabel);

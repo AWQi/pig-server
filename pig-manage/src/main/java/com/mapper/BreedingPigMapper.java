@@ -10,7 +10,7 @@ public interface BreedingPigMapper {
 
     int deleteByExample(BreedingPigExample example);
 
-    int deleteByPrimaryKey(Integer earlabel);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(BreedingPig record);
 
@@ -18,7 +18,7 @@ public interface BreedingPigMapper {
 
     List<BreedingPig> selectByExample(BreedingPigExample example);
 
-    BreedingPig selectByPrimaryKey(Integer earlabel);
+    BreedingPig selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") BreedingPig record, @Param("example") BreedingPigExample example);
 

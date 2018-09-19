@@ -104,6 +104,66 @@ public class BreedingPigExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
+        public Criteria andIdIsNull() {
+            addCriterion("id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdIsNotNull() {
+            addCriterion("id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdEqualTo(Integer value) {
+            addCriterion("id =", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotEqualTo(Integer value) {
+            addCriterion("id <>", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdGreaterThan(Integer value) {
+            addCriterion("id >", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("id >=", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdLessThan(Integer value) {
+            addCriterion("id <", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdLessThanOrEqualTo(Integer value) {
+            addCriterion("id <=", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdIn(List<Integer> values) {
+            addCriterion("id in", values, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotIn(List<Integer> values) {
+            addCriterion("id not in", values, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdBetween(Integer value1, Integer value2) {
+            addCriterion("id between", value1, value2, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("id not between", value1, value2, "id");
+            return (Criteria) this;
+        }
+
         public Criteria andEarlabelIsNull() {
             addCriterion("earlabel is null");
             return (Criteria) this;
@@ -114,52 +174,62 @@ public class BreedingPigExample {
             return (Criteria) this;
         }
 
-        public Criteria andEarlabelEqualTo(Integer value) {
+        public Criteria andEarlabelEqualTo(String value) {
             addCriterion("earlabel =", value, "earlabel");
             return (Criteria) this;
         }
 
-        public Criteria andEarlabelNotEqualTo(Integer value) {
+        public Criteria andEarlabelNotEqualTo(String value) {
             addCriterion("earlabel <>", value, "earlabel");
             return (Criteria) this;
         }
 
-        public Criteria andEarlabelGreaterThan(Integer value) {
+        public Criteria andEarlabelGreaterThan(String value) {
             addCriterion("earlabel >", value, "earlabel");
             return (Criteria) this;
         }
 
-        public Criteria andEarlabelGreaterThanOrEqualTo(Integer value) {
+        public Criteria andEarlabelGreaterThanOrEqualTo(String value) {
             addCriterion("earlabel >=", value, "earlabel");
             return (Criteria) this;
         }
 
-        public Criteria andEarlabelLessThan(Integer value) {
+        public Criteria andEarlabelLessThan(String value) {
             addCriterion("earlabel <", value, "earlabel");
             return (Criteria) this;
         }
 
-        public Criteria andEarlabelLessThanOrEqualTo(Integer value) {
+        public Criteria andEarlabelLessThanOrEqualTo(String value) {
             addCriterion("earlabel <=", value, "earlabel");
             return (Criteria) this;
         }
 
-        public Criteria andEarlabelIn(List<Integer> values) {
+        public Criteria andEarlabelLike(String value) {
+            addCriterion("earlabel like", value, "earlabel");
+            return (Criteria) this;
+        }
+
+        public Criteria andEarlabelNotLike(String value) {
+            addCriterion("earlabel not like", value, "earlabel");
+            return (Criteria) this;
+        }
+
+        public Criteria andEarlabelIn(List<String> values) {
             addCriterion("earlabel in", values, "earlabel");
             return (Criteria) this;
         }
 
-        public Criteria andEarlabelNotIn(List<Integer> values) {
+        public Criteria andEarlabelNotIn(List<String> values) {
             addCriterion("earlabel not in", values, "earlabel");
             return (Criteria) this;
         }
 
-        public Criteria andEarlabelBetween(Integer value1, Integer value2) {
+        public Criteria andEarlabelBetween(String value1, String value2) {
             addCriterion("earlabel between", value1, value2, "earlabel");
             return (Criteria) this;
         }
 
-        public Criteria andEarlabelNotBetween(Integer value1, Integer value2) {
+        public Criteria andEarlabelNotBetween(String value1, String value2) {
             addCriterion("earlabel not between", value1, value2, "earlabel");
             return (Criteria) this;
         }

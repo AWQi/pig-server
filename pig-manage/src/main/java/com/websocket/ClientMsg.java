@@ -4,6 +4,7 @@ public class ClientMsg {
 public String eventType = "online";
 public String msg = "";
 public int no  = 0;
+
 public String getEventType() {
 	return eventType;
 }
