@@ -1,5 +1,6 @@
 package com.websocket;
 
+import java.nio.channels.NotYetConnectedException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -11,6 +12,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import org.java_websocket.WebSocket;
+import org.java_websocket.exceptions.WebsocketNotConnectedException;
 
 public class ClientManager {
 	
@@ -124,12 +126,25 @@ public class ClientManager {
     public void sendMessageToAll(String message) {
         Set<WebSocket> keySet = mMapSocketToClient.keySet();
         synchronized (keySet) {
-            for (WebSocket conn : keySet) {
-                Client Client = mMapSocketToClient.get(conn);
-                if (Client != null) {
-                    conn.send(message);
-                }
-            }
+        	for (WebSocket conn : keySet) {
+			    Client Client = mMapSocketToClient.get(conn);
+			    if (Client != null) {
+			    	
+		            try {
+		            	 conn.send(message);
+					} catch (NotYetConnectedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}catch(WebsocketNotConnectedException e) { //
+						System.out.println("websocket 断连-------------------------");
+						mMapIdToClient.keySet().remove(conn);
+					}
+			    }
+			}
+        	
+        	
+        	
+        
         }
     }
 	

@@ -45,8 +45,28 @@ private BreedingPigService breedingPigService;
 		// TODO Auto-generated method stub
 		this.startWebsocketInstantMsg();
 		
-		listenRFID();
+//		listenRFID();
 		
+		new  Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				while(true) {
+					try {
+						Thread.sleep(500);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					ClientMsg msg = new ClientMsg();
+					msg.eventType = ClientMsg.EVENT_RFID;
+					msg.msg = "d1deef5a";
+					msg.no = 1;
+					ClientManager.getInstance().sendMessageToAll(JsonUtils.objectToJson(msg));
+				}
+			}
+		}).start();
 		
 		// 测试异步任务
 //		startAsyncTaskTest();
@@ -72,35 +92,44 @@ private BreedingPigService breedingPigService;
 			
 			@Override
 			public void run() {
-		    	PortUtil test1=new PortUtil();
-		    	test1.init(19200,"COM8");
+		    	PortUtil test1;
+				
+					test1 = new PortUtil();
+					test1.init(19200,"COM8");
+				
 			while(true) {
 				test1.sendRFIDMsg(RFIDListener.rfidFind);
 		    	String s = test1.readFromPort() ; 	
-		    	System.out.println("获取数据："+s);
+//		    	System.out.println("获取数据："+s);
 		    	String info = test1.checkInfo(s);
 
 		    	if (info!=null) {
 					System.out.println("info"+info);
 					//  发送数据
 					ClientMsg msg = new ClientMsg();
-					msg.eventType = "rfid";
+					msg.eventType = ClientMsg.EVENT_RFID;
 					msg.msg = "刷卡";
 					msg.no = 1;
 					ClientManager.getInstance().sendMessageToAll(JsonUtils.objectToJson(msg));					
 				}
 		    	test1.sendRFIDMsg(RFIDListener.rfidConflict);
 		    	 s = test1.readFromPort() ; 	
-		    	System.out.println("获取数据"+s);
+//		    	System.out.println("获取数据"+s);
 		    	 info = test1.checkInfo(s);
 		    	 if (info!=null) {
 						System.out.println("info"+info);
 						//  发送数据
 						ClientMsg msg = new ClientMsg();
-						msg.eventType = "rfid";
-						msg.msg = "刷卡";
+						msg.eventType = ClientMsg.EVENT_RFID;
+						msg.msg = info;
 						msg.no = 1;
-						ClientManager.getInstance().sendMessageToAll(JsonUtils.objectToJson(msg));					
+						ClientManager.getInstance().sendMessageToAll(JsonUtils.objectToJson(msg));
+						try {
+							Thread.sleep(1000);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 			}
 //	

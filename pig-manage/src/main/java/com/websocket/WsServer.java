@@ -55,7 +55,7 @@ public class WsServer extends WebSocketServer {
     public void onMessage(WebSocket conn, String message) {
 		System.out.println(message);
 		ClientMsg msg = JsonUtils.jsonToPojo(message, ClientMsg.class);
-		if (msg.getEventType().equals("online")) { //  上线
+		if (msg.getEventType().equals(ClientMsg.EVENT_ONLINE)) { //  上线
 			String clientId =  msg.getMsg();
 	    	ClientJoin(conn,clientId);
 	    	msg.msg = "websocket已连接";

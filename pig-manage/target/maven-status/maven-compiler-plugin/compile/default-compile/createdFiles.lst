@@ -10,6 +10,7 @@ com\task\AsyncTask.class
 com\pojo\PigstyExample$GeneratedCriteria.class
 com\pojo\Eliminate.class
 com\pojo\PigstyExample$Criterion.class
+com\websocket\WebSocketFilter$2.class
 com\controller\HelloController.class
 com\pojo\PigstyExample.class
 com\pojo\BreedingPigExample$Criterion.class

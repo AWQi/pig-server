@@ -1,6 +1,11 @@
 package com.websocket;
 
 public class ClientMsg {
+static public final String   EVENT_ONLINE = "online";
+static public final String   EVENT_RFID = "rfid";
+static public final String   EVENT_ZIGBEE = "zigbee";
+//	rfid
+// 	
 public String eventType = "online";
 public String msg = "";
 public int no  = 0;

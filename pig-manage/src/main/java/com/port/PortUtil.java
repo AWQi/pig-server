@@ -39,8 +39,10 @@ public class PortUtil implements SerialPortEventListener {
     	
     	try {
 //    		portId=CommPortIdentifier.getPortIdentifier("COM8");
-    		portId=CommPortIdentifier.getPortIdentifier(port);
-
+    		
+    	
+			portId=CommPortIdentifier.getPortIdentifier(port);
+			
         	System.out.println("打开端口："+portId.getName());
             serialPort = (SerialPort) portId.open(DEMONAME,2000);
             //设置串口监听
@@ -70,6 +72,8 @@ public class PortUtil implements SerialPortEventListener {
         	System.out.println("没有该端口");
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+//			System.out.println("尝试重新连接串口");
+//			init(baudRate, port);
 		}
     }
 
@@ -347,12 +351,12 @@ public double exchange(String string){
 	public void sendRFIDMsg(String msg){
 		
 
-		System.out.println(" RFID帧数据="+msg+"  ："+msg.getBytes());
+//		System.out.println(" RFID帧数据="+msg+"  ："+msg.getBytes());
 
 		try {
 		    outputStream.write(hexStr2Bytes(msg));
 		    outputStream.flush();
-		    System.out.println("输出成功");
+//		    System.out.println("输出成功");
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("输出失败");
