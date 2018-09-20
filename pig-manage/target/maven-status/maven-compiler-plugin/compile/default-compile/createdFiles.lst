@@ -23,12 +23,14 @@ com\websocket\WebSocketFilter.class
 com\task\AsyncTask$SerialExecutor$1.class
 com\pojo\SaleExample.class
 com\service\CommercialPigService.class
+com\websocket\WebSocketFilter$3.class
 com\task\AsyncTask$WorkerRunnable.class
 com\pojo\CommercialPig.class
 com\pojo\SwineBreedingExample$Criterion.class
 com\websocket\ClientMsg.class
 com\pojo\BreedingPigExample.class
 com\service\ImmuneService.class
+com\port\ZigbeeDate.class
 com\service\BreedingPigService.class
 com\pojo\BreedingPigExample$Criteria.class
 com\pojo\CommercialPigExample$GeneratedCriteria.class

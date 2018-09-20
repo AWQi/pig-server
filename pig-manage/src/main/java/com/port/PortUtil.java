@@ -10,6 +10,8 @@ import java.util.TooManyListenersException;
 
 import org.apache.commons.lang3.ArrayUtils;
 
+import com.alibaba.druid.sql.visitor.functions.Char;
+
 
 
 
@@ -82,7 +84,6 @@ public class PortUtil implements SerialPortEventListener {
      */
     @Override
     public void serialEvent(SerialPortEvent serialPortEvent) {
-    	System.out.println("--serialPortEvent----------------------");
         switch (serialPortEvent.getEventType()) {
          
         case SerialPortEvent.OUTPUT_BUFFER_EMPTY:
@@ -100,58 +101,38 @@ public class PortUtil implements SerialPortEventListener {
     /**
      * 读取串口serialEvent信息
      */
-    private void readPort() {
-    	byte[] readBuffer = new byte[30];
+    public ZigbeeDate readZigbeePort() {
+    	byte[] readBuffer = new byte[11];
         int availableBytes  = 0;
-        
-    	String rain="";
-    	String light="";
-    	String temp="";
-    	String humi="";
-    	String control="";
-        
+       
         try {
-			while (true) {
+	
 				availableBytes = inputStream.available();
 				while (availableBytes > 0) {
 					inputStream.read(readBuffer);
 					
-					String x=bytesToHexString(readBuffer).substring(0, 10);
-					String y=bytesToHexString(readBuffer).substring(10,14);
-					
-					
-					if(x.equals("02071800f1")&y.equals("ee61")){
-						rain=bytesToHexString(readBuffer).substring(16,20);
-						System.out.println("rain:"+rain);
-					}
-					if(x.equals("02071800f1")&y.equals("00a0")){
-						control=bytesToHexString(readBuffer).substring(16,18);
-						System.out.println("control:"+control);
-					}
-					if(x.equals("02081800f1")&&y.equals("d715")){
-						light=bytesToHexString(readBuffer).substring(16,20);
-						System.out.println("light:"+exchange(light));
-					}
-					
-					if(x.equals("02081800f1")&&y.equals("478c")){
-						if(bytesToHexString(readBuffer).substring(14, 16).equals("01")){
-							temp=bytesToHexString(readBuffer).substring(16,20);
-							System.out.println("temp:"+exchange(temp));
-						}
-						if(bytesToHexString(readBuffer).substring(14, 16).equals("02")){
-							humi=bytesToHexString(readBuffer).substring(16,20);
-							System.out.println("humi:"+exchange(humi));
-						}
-					}
-					
-					
 					System.out.println(byte2HexStr(readBuffer));
 					
-					//更新循环条件
-					availableBytes = inputStream.available();
+					/**
+					 * 转化为string 时
+					 * 0-9 数据帧首部
+					 * 10-13  网络地址
+					 * 14-15 数据类型    01 温度 02 湿度
+					 * 16-19 数据 
+					 * 20-21 帧尾校验 
+//					 */
+					String[]  ss = byte2HexStr(readBuffer).split(" ");
+					String address=ss[6]+ss[5]; // 网络地址  获取数据与 串口助手显示 两个byte颠倒
+					String type=ss[7]; // 数据类型  01 温度 02 湿度
+					
+					float date =Integer.parseInt(ss[9]+ss[8],16)/100.0f;// 数据 获取数据与 串口助手显示 两个byte颠倒  在由小数点分开
+							
+					System.out.println(date);
+					return new ZigbeeDate(address, type, date);
+					
 				}
 				Thread.sleep(0);
-			} 
+	
         }catch (IOException e) {
         	System.out.println("获取输出流失败");
         	System.exit(0);
@@ -159,8 +140,27 @@ public class PortUtil implements SerialPortEventListener {
         } catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-    }
+        return null;
+        }
     
+    
+  static public int hexStr2Int(String s){
+    	char[] cs =s.toCharArray();
+    	int[] is = new int[s.length()];
+    	for(int i =0 ;i<cs.length;i++) {
+    		is[i] = cs[i];
+    	}
+    	for(int i = cs.length-1;i>=0;i--) {
+    		for(int j = i;j>=0;j--) {
+    			is[j]*=16;
+    		}
+    	}
+    	int sum = 0;
+    	for (int i = 0; i < is.length; i++) {
+			sum+=is[i];
+		}
+    	return sum;
+    }
   //向串口发送信息方法
   	public void sendMsg(String msg){
   		
@@ -238,7 +238,7 @@ public class PortUtil implements SerialPortEventListener {
             sb.append((stmp.length()==1)? "0"+stmp : stmp);  
 
 //            sb.append("");  
-            sb.append("");  
+            sb.append(" ");  
         }  
         return sb.toString().toUpperCase().trim();  
     }  
@@ -364,7 +364,7 @@ public double exchange(String string){
 	}
 
     
-    public  String readFromPort() {
+    public  String readRfidPort() {
 //    	SerialPort serialPort
 		InputStream in = null;
 		byte[] bytes = {};
@@ -391,7 +391,7 @@ public double exchange(String string){
 			}
 		}
 
-		return byte2HexStr(bytes);
+		return bytesToHexString(bytes);
 	}
     public String checkInfo(String s){
 		if (s.length()>20) {
@@ -404,36 +404,50 @@ public double exchange(String string){
 
     
      public static void main(String[] args)  {
-    	 
-    	PortUtil test1=new PortUtil();
-//    	test1.closeSerialPort();	
-//    	test1.init(115200,"COM7");
-    	test1.init(19200,"COM8");
-	
-//    	test1.sendMsg(rfid);
-    	test1.sendRFIDMsg(rfidFind);
-    	String s = test1.readFromPort() ; 	
-    	System.out.println("获取数据："+s);
-    	String info = test1.checkInfo(s);
-
-    	if (info!=null) {
-			System.out.println("info"+info);
-		}
-    	test1.sendRFIDMsg(rfidConflict);
-    	 s = test1.readFromPort() ; 	
-    	System.out.println("获取数据"+s);
-    	 info = test1.checkInfo(s);
-
-    	if (info!=null) {
-			System.out.println("info  "+info);
-		}
-   	
-    	
+//    	 
+//    	PortUtil test1=new PortUtil();
+////    	test1.closeSerialPort();	
+////    	test1.init(115200,"COM7");
+//    	test1.init(19200,"COM8");
+//	
+////    	test1.sendMsg(rfid);
+//    	test1.sendRFIDMsg(rfidFind);
+//    	String s = test1.readFromPort() ; 	
+//    	System.out.println("获取数据："+s);
+//    	String info = test1.checkInfo(s);
+//
+//    	if (info!=null) {
+//			System.out.println("info"+info);
+//		}
 //    	test1.sendRFIDMsg(rfidConflict);
-//    	Thread.sleep(1000);
-//    	test1.readRFIDPort();
-//    	test1.readFromPort();
-//        test1.closeSerialPort();
+//    	 s = test1.readFromPort() ; 	
+//    	System.out.println("获取数据"+s);
+//    	 info = test1.checkInfo(s);
+//
+//    	if (info!=null) {
+//			System.out.println("info  "+info);
+//		}
+//   	
+//    	
+////    	test1.sendRFIDMsg(rfidConflict);
+////    	Thread.sleep(1000);
+////    	test1.readRFIDPort();
+////    	test1.readFromPort();
+////        test1.closeSerialPort();
+    	 
+    	 
+   	 
+    	PortUtil test1=new PortUtil();
+    	test1.init(115200,"COM7");
+    	while(true) {
+    		test1.readZigbeePort();
+    	}	
+//    	System.out.println("获取数据："+s);
+    	 
+    	 
+    	 
+    	
+
     	
     }
 }

@@ -19,6 +19,7 @@ import com.common.JsonUtils;
 import com.pojo.BreedingPig;
 import com.port.PortUtil;
 import com.port.RFIDListener;
+import com.port.ZigbeeDate;
 import com.service.BreedingPigService;
 import com.task.AsyncTask;
 
@@ -46,7 +47,16 @@ private BreedingPigService breedingPigService;
 		this.startWebsocketInstantMsg();
 		
 //		listenRFID();
+		listenZigbee();
+
+		// 测试异步任务
+//		startAsyncTaskTest();
 		
+
+	}
+	
+	
+	public void test(){
 		new  Thread(new Runnable() {
 			
 			@Override
@@ -68,10 +78,6 @@ private BreedingPigService breedingPigService;
 			}
 		}).start();
 		
-		// 测试异步任务
-//		startAsyncTaskTest();
-		
-
 	}
 	
 
@@ -99,7 +105,7 @@ private BreedingPigService breedingPigService;
 				
 			while(true) {
 				test1.sendRFIDMsg(RFIDListener.rfidFind);
-		    	String s = test1.readFromPort() ; 	
+		    	String s = test1.readRfidPort() ; 	
 //		    	System.out.println("获取数据："+s);
 		    	String info = test1.checkInfo(s);
 
@@ -113,7 +119,7 @@ private BreedingPigService breedingPigService;
 					ClientManager.getInstance().sendMessageToAll(JsonUtils.objectToJson(msg));					
 				}
 		    	test1.sendRFIDMsg(RFIDListener.rfidConflict);
-		    	 s = test1.readFromPort() ; 	
+		    	 s = test1.readRfidPort(); 	
 //		    	System.out.println("获取数据"+s);
 		    	 info = test1.checkInfo(s);
 		    	 if (info!=null) {
@@ -136,7 +142,30 @@ private BreedingPigService breedingPigService;
 			}
 		}).start();
 	}
-	
+	public void listenZigbee(){
+		new Thread(new Runnable() {
+		 
+	    		
+			@Override
+			public void run() {
+				PortUtil test1=new PortUtil();
+		    	test1.init(115200,"COM7");
+				while(true) {
+					ZigbeeDate zigbeeDate = test1.readZigbeePort();
+					if (zigbeeDate!=null) {
+						//  发送数据
+						ClientMsg msg = new ClientMsg();
+						msg.eventType = ClientMsg.EVENT_ZIGBEE;
+						msg.msg = JsonUtils.objectToJson(zigbeeDate);
+						msg.no = 1;
+						ClientManager.getInstance().sendMessageToAll(JsonUtils.objectToJson(msg));
+					}
+					
+				}
+				
+			}
+		}).start();
+	}
 	
 	
 	

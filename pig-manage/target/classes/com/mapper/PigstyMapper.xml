@@ -4,10 +4,11 @@
   <resultMap id="BaseResultMap" type="com.pojo.Pigsty" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="temperature" property="temperature" jdbcType="INTEGER" />
-    <result column="humidity" property="humidity" jdbcType="INTEGER" />
-    <result column="Illumination" property="illumination" jdbcType="INTEGER" />
+    <result column="temperature" property="temperature" jdbcType="REAL" />
+    <result column="humidity" property="humidity" jdbcType="REAL" />
+    <result column="Illumination" property="illumination" jdbcType="REAL" />
     <result column="pig_type" property="pigType" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, temperature, humidity, Illumination, pig_type
+    id, name, temperature, humidity, Illumination, pig_type, address
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pojo.PigstyExample" >
     select
@@ -102,11 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.pojo.Pigsty" >
     insert into pigsty (id, name, temperature, 
-      humidity, Illumination, pig_type
-      )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{temperature,jdbcType=INTEGER}, 
-      #{humidity,jdbcType=INTEGER}, #{illumination,jdbcType=INTEGER}, #{pigType,jdbcType=VARCHAR}
-      )
+      humidity, Illumination, pig_type, 
+      address)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{temperature,jdbcType=REAL}, 
+      #{humidity,jdbcType=REAL}, #{illumination,jdbcType=REAL}, #{pigType,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.pojo.Pigsty" >
     insert into pigsty
@@ -129,6 +130,9 @@
       <if test="pigType != null" >
         pig_type,
       </if>
+      <if test="address != null" >
+        address,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -138,16 +142,19 @@
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="temperature != null" >
-        #{temperature,jdbcType=INTEGER},
+        #{temperature,jdbcType=REAL},
       </if>
       <if test="humidity != null" >
-        #{humidity,jdbcType=INTEGER},
+        #{humidity,jdbcType=REAL},
       </if>
       <if test="illumination != null" >
-        #{illumination,jdbcType=INTEGER},
+        #{illumination,jdbcType=REAL},
       </if>
       <if test="pigType != null" >
         #{pigType,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -167,16 +174,19 @@
         name = #{record.name,jdbcType=VARCHAR},
       </if>
       <if test="record.temperature != null" >
-        temperature = #{record.temperature,jdbcType=INTEGER},
+        temperature = #{record.temperature,jdbcType=REAL},
       </if>
       <if test="record.humidity != null" >
-        humidity = #{record.humidity,jdbcType=INTEGER},
+        humidity = #{record.humidity,jdbcType=REAL},
       </if>
       <if test="record.illumination != null" >
-        Illumination = #{record.illumination,jdbcType=INTEGER},
+        Illumination = #{record.illumination,jdbcType=REAL},
       </if>
       <if test="record.pigType != null" >
         pig_type = #{record.pigType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -187,10 +197,11 @@
     update pigsty
     set id = #{record.id,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
-      temperature = #{record.temperature,jdbcType=INTEGER},
-      humidity = #{record.humidity,jdbcType=INTEGER},
-      Illumination = #{record.illumination,jdbcType=INTEGER},
-      pig_type = #{record.pigType,jdbcType=VARCHAR}
+      temperature = #{record.temperature,jdbcType=REAL},
+      humidity = #{record.humidity,jdbcType=REAL},
+      Illumination = #{record.illumination,jdbcType=REAL},
+      pig_type = #{record.pigType,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -202,16 +213,19 @@
         name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="temperature != null" >
-        temperature = #{temperature,jdbcType=INTEGER},
+        temperature = #{temperature,jdbcType=REAL},
       </if>
       <if test="humidity != null" >
-        humidity = #{humidity,jdbcType=INTEGER},
+        humidity = #{humidity,jdbcType=REAL},
       </if>
       <if test="illumination != null" >
-        Illumination = #{illumination,jdbcType=INTEGER},
+        Illumination = #{illumination,jdbcType=REAL},
       </if>
       <if test="pigType != null" >
         pig_type = #{pigType,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -219,10 +233,11 @@
   <update id="updateByPrimaryKey" parameterType="com.pojo.Pigsty" >
     update pigsty
     set name = #{name,jdbcType=VARCHAR},
-      temperature = #{temperature,jdbcType=INTEGER},
-      humidity = #{humidity,jdbcType=INTEGER},
-      Illumination = #{illumination,jdbcType=INTEGER},
-      pig_type = #{pigType,jdbcType=VARCHAR}
+      temperature = #{temperature,jdbcType=REAL},
+      humidity = #{humidity,jdbcType=REAL},
+      Illumination = #{illumination,jdbcType=REAL},
+      pig_type = #{pigType,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -1,5 +1,6 @@
 package com.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,11 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.mapper.BreedingPigMapper;
 import com.mapper.ChangePigstyBreedMapper;
+import com.mapper.PigstyMapper;
 import com.mapper.SwineBreedingMapper;
 import com.pojo.BreedingPig;
 import com.pojo.BreedingPigExample;
 import com.pojo.BreedingPigExample.Criteria;
 import com.pojo.ChangePigstyBreed;
+import com.pojo.Pigsty;
 import com.pojo.SwineBreeding;
 
 /**
@@ -28,7 +31,8 @@ private BreedingPigMapper breedingPigMapper ;
 private ChangePigstyBreedMapper changePigstyBreedMapper;
 @Autowired
 private SwineBreedingMapper swineBreedingMapper;
-
+@Autowired
+private PigstyMapper pigstyMapper;
 
 
 
@@ -37,12 +41,29 @@ private SwineBreedingMapper swineBreedingMapper;
 	 * @param earlabel
 	 * @return
 	 */
-	public List<BreedingPig> queryAll() {
+	public List<com.bean.BreedingPig> queryAll() {
 		BreedingPigExample example = new BreedingPigExample();
 		Criteria criteria = example.createCriteria();
 		criteria.andEarlabelIsNotNull();
 		List<BreedingPig> list = breedingPigMapper.selectByExample(example);
-		return list;
+		System.out.println(list.size());
+		List<com.bean.BreedingPig> breedingPigList =new ArrayList<>();
+		
+		for (BreedingPig b : list) {
+		Pigsty	pigsty  = pigstyMapper.selectByPrimaryKey(b.getPigstyMessage());
+			com.bean.BreedingPig breedingPig = new com.bean.BreedingPig();
+			breedingPig.setId(b.getId());
+			breedingPig.setEarlabel(b.getEarlabel());
+			breedingPig.setPigstyMessage(b.getPigstyMessage());
+			breedingPig.setPigstyName(pigsty.getName());
+			breedingPig.setPigVariety(b.getPigVariety());
+			breedingPig.setPigType(b.getPigType());
+			breedingPig.setBirthdate(b.getBirthdate());
+			breedingPig.setEntergroupDate(b.getEntergroupDate());
+			breedingPig.setGender(b.getGender());
+				breedingPigList.add(breedingPig);
+		}
+		return breedingPigList;
 	}
 
 /**

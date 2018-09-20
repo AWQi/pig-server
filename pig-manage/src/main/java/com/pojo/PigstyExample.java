@@ -244,52 +244,52 @@ public class PigstyExample {
             return (Criteria) this;
         }
 
-        public Criteria andTemperatureEqualTo(Integer value) {
+        public Criteria andTemperatureEqualTo(Float value) {
             addCriterion("temperature =", value, "temperature");
             return (Criteria) this;
         }
 
-        public Criteria andTemperatureNotEqualTo(Integer value) {
+        public Criteria andTemperatureNotEqualTo(Float value) {
             addCriterion("temperature <>", value, "temperature");
             return (Criteria) this;
         }
 
-        public Criteria andTemperatureGreaterThan(Integer value) {
+        public Criteria andTemperatureGreaterThan(Float value) {
             addCriterion("temperature >", value, "temperature");
             return (Criteria) this;
         }
 
-        public Criteria andTemperatureGreaterThanOrEqualTo(Integer value) {
+        public Criteria andTemperatureGreaterThanOrEqualTo(Float value) {
             addCriterion("temperature >=", value, "temperature");
             return (Criteria) this;
         }
 
-        public Criteria andTemperatureLessThan(Integer value) {
+        public Criteria andTemperatureLessThan(Float value) {
             addCriterion("temperature <", value, "temperature");
             return (Criteria) this;
         }
 
-        public Criteria andTemperatureLessThanOrEqualTo(Integer value) {
+        public Criteria andTemperatureLessThanOrEqualTo(Float value) {
             addCriterion("temperature <=", value, "temperature");
             return (Criteria) this;
         }
 
-        public Criteria andTemperatureIn(List<Integer> values) {
+        public Criteria andTemperatureIn(List<Float> values) {
             addCriterion("temperature in", values, "temperature");
             return (Criteria) this;
         }
 
-        public Criteria andTemperatureNotIn(List<Integer> values) {
+        public Criteria andTemperatureNotIn(List<Float> values) {
             addCriterion("temperature not in", values, "temperature");
             return (Criteria) this;
         }
 
-        public Criteria andTemperatureBetween(Integer value1, Integer value2) {
+        public Criteria andTemperatureBetween(Float value1, Float value2) {
             addCriterion("temperature between", value1, value2, "temperature");
             return (Criteria) this;
         }
 
-        public Criteria andTemperatureNotBetween(Integer value1, Integer value2) {
+        public Criteria andTemperatureNotBetween(Float value1, Float value2) {
             addCriterion("temperature not between", value1, value2, "temperature");
             return (Criteria) this;
         }
@@ -304,52 +304,52 @@ public class PigstyExample {
             return (Criteria) this;
         }
 
-        public Criteria andHumidityEqualTo(Integer value) {
+        public Criteria andHumidityEqualTo(Float value) {
             addCriterion("humidity =", value, "humidity");
             return (Criteria) this;
         }
 
-        public Criteria andHumidityNotEqualTo(Integer value) {
+        public Criteria andHumidityNotEqualTo(Float value) {
             addCriterion("humidity <>", value, "humidity");
             return (Criteria) this;
         }
 
-        public Criteria andHumidityGreaterThan(Integer value) {
+        public Criteria andHumidityGreaterThan(Float value) {
             addCriterion("humidity >", value, "humidity");
             return (Criteria) this;
         }
 
-        public Criteria andHumidityGreaterThanOrEqualTo(Integer value) {
+        public Criteria andHumidityGreaterThanOrEqualTo(Float value) {
             addCriterion("humidity >=", value, "humidity");
             return (Criteria) this;
         }
 
-        public Criteria andHumidityLessThan(Integer value) {
+        public Criteria andHumidityLessThan(Float value) {
             addCriterion("humidity <", value, "humidity");
             return (Criteria) this;
         }
 
-        public Criteria andHumidityLessThanOrEqualTo(Integer value) {
+        public Criteria andHumidityLessThanOrEqualTo(Float value) {
             addCriterion("humidity <=", value, "humidity");
             return (Criteria) this;
         }
 
-        public Criteria andHumidityIn(List<Integer> values) {
+        public Criteria andHumidityIn(List<Float> values) {
             addCriterion("humidity in", values, "humidity");
             return (Criteria) this;
         }
 
-        public Criteria andHumidityNotIn(List<Integer> values) {
+        public Criteria andHumidityNotIn(List<Float> values) {
             addCriterion("humidity not in", values, "humidity");
             return (Criteria) this;
         }
 
-        public Criteria andHumidityBetween(Integer value1, Integer value2) {
+        public Criteria andHumidityBetween(Float value1, Float value2) {
             addCriterion("humidity between", value1, value2, "humidity");
             return (Criteria) this;
         }
 
-        public Criteria andHumidityNotBetween(Integer value1, Integer value2) {
+        public Criteria andHumidityNotBetween(Float value1, Float value2) {
             addCriterion("humidity not between", value1, value2, "humidity");
             return (Criteria) this;
         }
@@ -364,52 +364,52 @@ public class PigstyExample {
             return (Criteria) this;
         }
 
-        public Criteria andIlluminationEqualTo(Integer value) {
+        public Criteria andIlluminationEqualTo(Float value) {
             addCriterion("Illumination =", value, "illumination");
             return (Criteria) this;
         }
 
-        public Criteria andIlluminationNotEqualTo(Integer value) {
+        public Criteria andIlluminationNotEqualTo(Float value) {
             addCriterion("Illumination <>", value, "illumination");
             return (Criteria) this;
         }
 
-        public Criteria andIlluminationGreaterThan(Integer value) {
+        public Criteria andIlluminationGreaterThan(Float value) {
             addCriterion("Illumination >", value, "illumination");
             return (Criteria) this;
         }
 
-        public Criteria andIlluminationGreaterThanOrEqualTo(Integer value) {
+        public Criteria andIlluminationGreaterThanOrEqualTo(Float value) {
             addCriterion("Illumination >=", value, "illumination");
             return (Criteria) this;
         }
 
-        public Criteria andIlluminationLessThan(Integer value) {
+        public Criteria andIlluminationLessThan(Float value) {
             addCriterion("Illumination <", value, "illumination");
             return (Criteria) this;
         }
 
-        public Criteria andIlluminationLessThanOrEqualTo(Integer value) {
+        public Criteria andIlluminationLessThanOrEqualTo(Float value) {
             addCriterion("Illumination <=", value, "illumination");
             return (Criteria) this;
         }
 
-        public Criteria andIlluminationIn(List<Integer> values) {
+        public Criteria andIlluminationIn(List<Float> values) {
             addCriterion("Illumination in", values, "illumination");
             return (Criteria) this;
         }
 
-        public Criteria andIlluminationNotIn(List<Integer> values) {
+        public Criteria andIlluminationNotIn(List<Float> values) {
             addCriterion("Illumination not in", values, "illumination");
             return (Criteria) this;
         }
 
-        public Criteria andIlluminationBetween(Integer value1, Integer value2) {
+        public Criteria andIlluminationBetween(Float value1, Float value2) {
             addCriterion("Illumination between", value1, value2, "illumination");
             return (Criteria) this;
         }
 
-        public Criteria andIlluminationNotBetween(Integer value1, Integer value2) {
+        public Criteria andIlluminationNotBetween(Float value1, Float value2) {
             addCriterion("Illumination not between", value1, value2, "illumination");
             return (Criteria) this;
         }
@@ -481,6 +481,76 @@ public class PigstyExample {
 
         public Criteria andPigTypeNotBetween(String value1, String value2) {
             addCriterion("pig_type not between", value1, value2, "pigType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressIsNull() {
+            addCriterion("address is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressIsNotNull() {
+            addCriterion("address is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressEqualTo(String value) {
+            addCriterion("address =", value, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressNotEqualTo(String value) {
+            addCriterion("address <>", value, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressGreaterThan(String value) {
+            addCriterion("address >", value, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressGreaterThanOrEqualTo(String value) {
+            addCriterion("address >=", value, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressLessThan(String value) {
+            addCriterion("address <", value, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressLessThanOrEqualTo(String value) {
+            addCriterion("address <=", value, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressLike(String value) {
+            addCriterion("address like", value, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressNotLike(String value) {
+            addCriterion("address not like", value, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressIn(List<String> values) {
+            addCriterion("address in", values, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressNotIn(List<String> values) {
+            addCriterion("address not in", values, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressBetween(String value1, String value2) {
+            addCriterion("address between", value1, value2, "address");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressNotBetween(String value1, String value2) {
+            addCriterion("address not between", value1, value2, "address");
             return (Criteria) this;
         }
     }

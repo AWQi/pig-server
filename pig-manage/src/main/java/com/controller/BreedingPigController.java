@@ -30,8 +30,8 @@ private BreedingPigService breedingPigService;
 @RequestMapping("queryAll")
 @ResponseBody
 public PigResult queryAll() {
-List<BreedingPig>list =breedingPigService.queryAll();
-	System.out.println(list.size());
+List<com.bean.BreedingPig>list =breedingPigService.queryAll();
+
 	return new PigResult(list);
 }
 
